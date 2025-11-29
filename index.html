@@ -7,6 +7,7 @@
     <meta name="description" content="The first true Operational RTS. Rise from Battalion to Corps Commander in a persistent 5-year campaign. Command the theatre, not the soldier.">
     <meta name="keywords" content="WWII RTS, Strategy Game, Field of Command, Steam Game, Wargame, Operational Level, UE5">
     <link rel="canonical" href="https://www.fieldofcommand.com/">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -161,7 +162,7 @@
                         </div>
                         
                         <h1 class="font-header text-6xl md:text-8xl leading-[0.85] mb-6">
-                            COMMAND THE THEATRE. <br> <span class="text-tactical-red">NOT THE SOLDIER.</span>
+                            PERSISTENT SCALABLE COMMAND. <br> <span class="text-tactical-red">THEATRE LEVEL OPERATIONS.</span>
                         </h1>
                         
                         <p class="text-lg leading-relaxed mb-8 max-w-xl border-l-4 border-tactical-red pl-6">
@@ -208,7 +209,7 @@
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-tactical-red rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1940 | WESTERN FRONT</span><span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
-                            <p class="text-sm max-w-lg"><strong>Dynamo to Aerial.</strong> Halt the Blitzkrieg with limited resources. Static defense lines, desperate holding actions, and the race to the sea.</p>
+                            <p class="text-sm max-w-lg"><strong>Dynamo to Aerial.</strong> Face the Blitzkrieg with limited resources. Static defense lines, desperate holding actions, and the race to survive.</p>
                         </div>
 
                         <!-- 1941 -->
@@ -223,16 +224,16 @@
                         <div class="relative pl-8 md:pl-12 group">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1942 | NORTH AFRICA</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span></div>
-                            <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">TURNING TIDE</h3>
-                            <p class="text-sm max-w-lg"><strong>Supercharge & Torch.</strong> The introduction of massed artillery and heavy armor reserves. Large-scale set-piece offensives aimed at breaking the line.</p>
+                            <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
+                            <p class="text-sm max-w-lg"><strong>Supercharge to Torch.</strong> The introduction of massed artillery and heavy armor reserves. Large-scale set-piece offensives aimed at breaking the line and destroying the Afrika Korps.</p>
                         </div>
 
                         <!-- 1943 -->
                         <div class="relative pl-8 md:pl-12 group">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1943 | TUNISIA</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span></div>
-                            <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">VICTORY IN AFRICA</h3>
-                            <p class="text-sm max-w-lg"><strong>Mareth & Tunis.</strong> The final destruction of the Afrika Korps. Coordinating multi-brigade assaults and air support in difficult terrain.</p>
+                            <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1943 | ITALY</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span></div>
+                            <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
+                            <p class="text-sm max-w-lg"><strong>Husky to Diadem.</strong> The first major amphibious landings into Europe. Coordinating multi-brigade assaults and air support in difficult mountainous terrain.</p>
                         </div>
 
                         <!-- 1944 -->
@@ -254,35 +255,130 @@
                 </div>
             </section>
 
-            <!-- MECHANICS -->
-            <section id="logistics" class="grid md:grid-cols-2 border-b-2 border-ink-black/10 reveal">
-                <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative">
-                    <i data-lucide="truck" class="w-10 h-10 text-tactical-red mb-6"></i>
-                    <h2 class="font-header text-4xl mb-4">LOGISTICS DEFINES VICTORY</h2>
-                    <p class="text-sm leading-relaxed mb-6">Amateurs talk tactics. Professionals talk logistics. Manage depots, protect supply lines, and ensure throughput matches your ambition. An army without supply cannot fight.</p>
-                    <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
-                        <div class="paper-clip" style="right: 50%;"></div>
-                        <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                            <img src="https://placehold.co/400x300/333/eee?text=Supply+Convoy" alt="Supply Truck" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                            <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">BEDFORD QLD - 3 TONNER</div>
+            <!-- MECHANICS: THE ART OF COMMAND -->
+            <section id="mechanics" class="border-b-2 border-ink-black/10 reveal">
+                <!-- ROW 1 -->
+                <div class="grid md:grid-cols-2 border-b-2 border-ink-black/10">
+                    <!-- 1. OPERATIONAL INTENT -->
+                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative">
+                        <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">OPERATIONAL INTENT</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            You do not click on individual soldiers. You issue <strong>Operational Intent</strong>. Define the objective, set the aggression level, and allocate resources. Your HQs handle the execution.
+                        </p>
+                        <!-- Attached Photo: MAP -->
+                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%;"></div>
+                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
+                                <img src="https://placehold.co/400x300/333/eee?text=Operational+Map" alt="Operational Map" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG A: OPERATIONAL PLANNING</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. CHAIN OF COMMAND -->
+                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
+                        <i data-lucide="users" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
+                        <h2 class="font-header text-4xl mb-4 relative z-10">CHAIN OF COMMAND</h2>
+                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
+                            You command through a hierarchy of AI Deputies. <strong>Monty</strong> is methodical and cautious. <strong>Horrocks</strong> is aggressive. Know your commanders to win the battle.
+                        </p>
+                        <!-- Attached Photo: HIERARCHY -->
+                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://placehold.co/400x300/222/ccc?text=Chain+of+Command" alt="Hierarchy Tree" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 30 CORPS HIERARCHY</div>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-paper-texture opacity-10 pointer-events-none"></div>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="grid md:grid-cols-2">
+                    <!-- 3. LOGISTICS -->
+                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 bg-paper-dark/20 relative">
+                        <i data-lucide="truck" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">LOGISTICS DEFINES VICTORY</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            Amateurs talk tactics. Professionals talk logistics. Manage depots, protect supply lines, and ensure throughput matches your ambition. An army without fuel is just a target.
+                        </p>
+                        <!-- Attached Photo: LOGISTICS -->
+                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%;"></div>
+                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
+                                <img src="https://placehold.co/400x300/333/eee?text=Supply+Convoy" alt="Supply Truck" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG C: SUPPLY LINES</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. PERSISTENCE -->
+                    <div class="p-8 md:p-16 relative">
+                        <i data-lucide="shield" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">A PERSISTENT WAR</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            Your units survive from Dunkirk to Berlin. The <strong>units</strong> and <strong>commanders</strong> gain experience and scars. Losing a veteran battalion in 1941 will haunt you in 1944.
+                        </p>
+                        <!-- Attached Photo: PERSISTENCE -->
+                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://placehold.co/400x300/222/ccc?text=Unit+Insignia" alt="Unit Badges" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: DIVISIONAL INSIGNIA</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <!-- FUTURE OPERATIONS (ROADMAP) -->
+            <section id="future" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative reveal bg-ink-black text-paper-cream">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
                 
-                <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
-                    <i data-lucide="users" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                    <h2 class="font-header text-4xl mb-4 relative z-10">INTENT OVER MICRO</h2>
-                    <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                        You do not click on individual soldiers. You issue <strong>Operational Intent</strong>. Historical AI Deputies (like Montgomery and Horrocks) execute your orders based on their unique personality traits.
-                    </p>
-                    <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                        <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                        <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                            <img src="https://placehold.co/400x300/222/ccc?text=Chain+of+Command" alt="Hierarchy Tree" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                            <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 30 CORPS HIERARCHY</div>
+                <div class="flex flex-col md:flex-row gap-12 relative z-10">
+                    <div class="flex-1">
+                        <h2 class="font-header text-4xl md:text-5xl mb-6 text-white flex items-center gap-3">
+                            <i data-lucide="globe" class="text-tactical-red"></i> FUTURE OPERATIONS
+                        </h2>
+                        <p class="text-lg leading-relaxed mb-8 border-l-4 border-tactical-red pl-6 opacity-90">
+                            The "V for Victory" campaign is just the beginning. Our roadmap includes expanding the theatre of war to every corner of the globe.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
+                                <div class="font-header text-2xl text-neutral-500 w-24">PHASE II</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">NORWAY 1940</h3>
+                                    <p class="text-xs max-w-sm">Experience an alternative to the distaster at Dunkirk, with the Allied expeditionary force in Norway</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
+                                <div class="font-header text-2xl text-neutral-500 w-24">PHASE III</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">BURMA 1944</h3>
+                                    <p class="text-xs max-w-sm">Take command of the forgotten army of Burma and face the relentless Japanese (and the jungle).</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
+                                <div class="font-header text-2xl text-neutral-500 w-24">PHASE IV</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-1">EAST AFRICA 1941</h3>
+                                    <p class="text-xs max-w-sm">Join forces with the British Indian and African troops to crush the Italians in East Africa.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="absolute inset-0 bg-paper-texture opacity-10 pointer-events-none"></div>
+
+                    <!-- ATTACHED PHOTO: ROADMAP -->
+                    <div class="w-full md:w-96 relative transform rotate-1 hover:rotate-0 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this)">
+                        <div class="paper-clip" style="right: 40%; background: #444;"></div>
+                        <div class="bg-paper-cream p-3 pb-8 shadow-photo border border-neutral-600">
+                            <img src="https://placehold.co/600x400/111/444?text=Global+Strategy+Map" alt="Global Roadmap" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                            <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">CLASSIFIED: LONG TERM STRATEGY</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -318,15 +414,15 @@
                     <div class="mb-16">
                         <h4 class="font-bold text-xs uppercase tracking-[0.3em] mb-6 opacity-60">COMMS CHANNELS</h4>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="#" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
+                            <a href="https://discord.gg/6mJq9XRzy" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
                                 <i class="fa-brands fa-discord text-2xl group-hover:text-[#5865F2]"></i>
                                 <span class="text-[10px] font-bold uppercase">Discord</span>
                             </a>
-                            <a href="#" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
+                            <a href="https://www.reddit.com/r/fieldofcommand/" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
                                 <i class="fa-brands fa-reddit-alien text-2xl group-hover:text-[#FF4500]"></i>
                                 <span class="text-[10px] font-bold uppercase">Reddit</span>
                             </a>
-                            <a href="#" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
+                            <a href="https://www.youtube.com/@FieldofCommand" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
                                 <i class="fa-brands fa-youtube text-2xl group-hover:text-[#FF0000]"></i>
                                 <span class="text-[10px] font-bold uppercase">Briefings</span>
                             </a>
