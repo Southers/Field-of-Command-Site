@@ -100,6 +100,14 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
         #lightbox { transition: opacity 0.3s ease; }
         #lightbox.hidden { pointer-events: none; opacity: 0; }
+        /* Nav Tabs */
+        .nav-tab {
+            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s;
+        }
+        .nav-tab:hover {
+            transform: translateY(-4px);
+        }
     </style>
 </head>
 <body class="bg-neutral-900 text-ink-black selection:bg-tactical-red selection:text-white font-mono overflow-x-hidden">
@@ -114,7 +122,8 @@
     <div class="relative z-10 min-h-screen flex flex-col items-center pt-14 pb-12 px-2 sm:px-6">
         
         <!-- NAV -->
-        <nav class="fixed top-0 left-0 right-0 z-50 h-14 bg-paper-dark border-b-2 border-ink-black shadow-xl flex items-center justify-between px-4 lg:px-12 backdrop-blur-sm bg-opacity-95">
+        <!-- NAV -->
+        <nav class="fixed top-0 left-0 right-0 z-50 h-16 bg-[#2a2a2a] border-b-4 border-ink-black shadow-2xl flex items-end justify-between px-4 lg:px-12 bg-[url('https://www.transparenttextures.com/patterns/dark-leather.png')]">
             <div class="flex items-center gap-3">
                 <div class="h-4 w-4 bg-tactical-red"></div>
                 <span class="font-header text-2xl tracking-wide pt-1">FIELD OF COMMAND</span>
@@ -156,13 +165,13 @@
                 <div class="flex flex-col md:flex-row gap-12">
                     <div class="flex-1 z-30 animate-fade-up">
                         <div class="flex items-center gap-2 text-xs font-bold text-neutral-500 mb-4 tracking-widest">
-                            <span>OPERATIONAL INTELLIGENCE</span>
+                            <span>INTELLIGENCE BREIF</span>
                             <span>//</span>
-                            <span>PRIORITY: TOP SECRET</span>
+                            <span>TOP SECRET</span>
                         </div>
                         
                         <h1 class="font-header text-6xl md:text-8xl leading-[0.85] mb-6">
-                            PERSISTENT SCALABLE COMMAND. <br> <span class="text-tactical-red">THEATRE LEVEL OPERATIONS.</span>
+                            PERSISTENT. <br> <span class="text-tactical-red">SCALABLE.</span>
                         </h1>
                         
                         <p class="text-lg leading-relaxed mb-8 max-w-xl border-l-4 border-tactical-red pl-6">
@@ -180,7 +189,7 @@
                     <div class="w-full md:w-80 relative transform rotate-2 hover:rotate-0 transition-transform duration-500 z-30 mt-8 md:mt-0 cursor-zoom-in group" onclick="openLightbox(this)">
                         <div class="paper-clip"></div>
                         <div class="bg-white p-3 pb-8 shadow-photo border border-neutral-300">
-                            <img src="https://www.fieldofcommand.com/images/map.png" alt="Tactical Map" loading="eager" class="w-full grayscale contrast-125 border border-neutral-200 group-hover:contrast-100 transition-all">
+                            <img src="https://www.fieldofcommand.com/images/command.png" alt="Tactical Map" loading="eager" class="w-full grayscale contrast-125 border border-neutral-200 group-hover:contrast-100 transition-all">
                             <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center tracking-widest">FIG A: THEATRE OPERATIONS (1940-1945)</div>
                         </div>
                     </div>
@@ -210,6 +219,9 @@
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1940 | WESTERN FRONT</span><span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
                             <p class="text-sm max-w-lg"><strong>Dynamo to Aerial.</strong> Face the Blitzkrieg with limited resources. Static defense lines, desperate holding actions, and the race to survive.</p>
+                            <div class="mt-4 border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
+                                <img src="images/timeline/1940.png" alt="Dunkirk 1940 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                            </div>
                         </div>
 
                         <!-- 1941 -->
@@ -218,6 +230,9 @@
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1941 | MEDITERRANEAN</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: MANOEUVRE</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CROSSROADS</h3>
                             <p class="text-sm max-w-lg"><strong>Compass to Crusader.</strong> War becomes a battle of supply lines. Long-range logistics and mobile armored columns in a vast, open theatre.</p>
+                            <div class="mt-4 border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
+                                <img src="images/timeline/1941.png" alt="North Africa 1941 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                            </div>
                         </div>
 
                         <!-- 1942 -->
@@ -226,6 +241,9 @@
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1942 | NORTH AFRICA</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
                             <p class="text-sm max-w-lg"><strong>Supercharge to Torch.</strong> The introduction of massed artillery and heavy armor reserves. Large-scale set-piece offensives aimed at breaking the line and destroying the Afrika Korps.</p>
+                            <div class="mt-4 border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
+                                <img src="images/timeline/1942.png" alt="El Alamein 1942 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                            </div>
                         </div>
 
                         <!-- 1943 -->
@@ -234,6 +252,9 @@
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1943 | ITALY</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
                             <p class="text-sm max-w-lg"><strong>Husky to Diadem.</strong> The first major amphibious landings into Europe. Coordinating multi-brigade assaults and air support in difficult mountainous terrain.</p>
+                            <div class="mt-4 border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
+                                <img src="images/timeline/1943.png" alt="Italy 1943 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                            </div>
                         </div>
 
                         <!-- 1944 -->
@@ -242,6 +263,9 @@
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1944 | NORTH-WEST EUROPE</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: VERTICAL ENVELOPMENT</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CRUSADE</h3>
                             <p class="text-sm max-w-lg"><strong>Overlord to Market Garden.</strong> Corps-level maneuver. Integrating airborne operations to seize bridges behind enemy lines.</p>
+                            <div class="mt-4 border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
+                                <img src="images/timeline/1944.png" alt="North-West Europe 1944 Concept Art (Placeholder)" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                            </div>
                         </div>
 
                         <!-- 1945 -->
@@ -250,6 +274,9 @@
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1945 | GERMANY</span><span class="text-[10px] bg-tactical-red text-white px-2 uppercase">DOCTRINE: TOTAL VICTORY</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CAULDRON</h3>
                             <p class="text-sm max-w-lg"><strong>Veritable to Plunder.</strong> The Rhine Crossing. Complex river crossings and the final crushing of resistance in the heart of the Reich.</p>
+                            <div class="mt-4 border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
+                                <img src="images/timeline/1945.png" alt="Germany 1945 Concept Art (Placeholder)" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,31 +291,31 @@
                         <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
                         <h2 class="font-header text-4xl mb-4">OPERATIONAL INTENT</h2>
                         <p class="text-sm leading-relaxed mb-6">
-                            You do not click on individual soldiers. You issue <strong>Operational Intent</strong>. Define the objective, set the aggression level, and allocate resources. Your HQs handle the execution.
+                            No time to micromanage. Issue commands and <strong>Operational Intent</strong>. Define the objective, allocate resources, and let your deputies handle the execution.
                         </p>
                         <!-- Attached Photo: MAP -->
                         <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%;"></div>
                             <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/map.png" alt="Operational Map" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="https://www.fieldofcommand.com/images/tactical.png" alt="Operational Map" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                 <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG A: OPERATIONAL PLANNING</div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- 2. CHAIN OF COMMAND -->
+                    <!-- 2. HIERARCHY -->
                     <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
                         <i data-lucide="users" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                        <h2 class="font-header text-4xl mb-4 relative z-10">CHAIN OF COMMAND</h2>
+                        <h2 class="font-header text-4xl mb-4 relative z-10">HIERARCHY OF COMMAND</h2>
                         <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                            You command through a hierarchy of AI Deputies. <strong>Monty</strong> is methodical and cautious. <strong>Horrocks</strong> is aggressive. Know your commanders to win the battle.
+                            You command through a hierarchy of AI Deputies. <strong>Monty</strong> is methodical and cautious. <strong>Horrocks</strong> is fast and aggressive. Know your commanders to win the battle.
                         </p>
                         <!-- Attached Photo: HIERARCHY -->
                         <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%; background: #444;"></div>
                             <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/command.png" alt="Hierarchy Tree" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 30 CORPS HIERARCHY</div>
+                                <img src="https://www.fieldofcommand.com/images/structure.png" alt="Hierarchy Tree" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 8TH ARMY OOB</div>
                             </div>
                         </div>
                         <div class="absolute inset-0 bg-paper-texture opacity-10 pointer-events-none"></div>
@@ -308,7 +335,7 @@
                         <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%;"></div>
                             <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/field.png" alt="Supply Truck" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="https://www.fieldofcommand.com/images/logistics.png" alt="Supply Truck" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                 <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG C: SUPPLY LINES</div>
                             </div>
                         </div>
@@ -317,7 +344,7 @@
                     <!-- 4. PERSISTENCE -->
                     <div class="p-8 md:p-16 relative">
                         <i data-lucide="shield" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">A PERSISTENT WAR</h2>
+                        <h2 class="font-header text-4xl mb-4">PERSISTENCE PREVAILS</h2>
                         <p class="text-sm leading-relaxed mb-6">
                             Your units survive from Dunkirk to Berlin. The <strong>units</strong> and <strong>commanders</strong> gain experience and scars. Losing a veteran battalion in 1941 will haunt you in 1944.
                         </p>
@@ -325,8 +352,25 @@
                         <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%; background: #444;"></div>
                             <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://www.fieldofcommand.com/images/persistance.png" alt="Unit Badges" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: BATTLE HONOURS</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. REALITY -->
+                    <div class="p-8 md:p-16 relative">
+                        <i data-lucide="medal" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">REALITY CHECK</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                           When the plan makes contact with the enemy. Experience the <strong>chaos</strong> of the <strong>frontline</strong> from a command perspective.
+                        </p>
+                        <!-- Attached Photo: REALITY -->
+                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
                                 <img src="https://www.fieldofcommand.com/images/field.png" alt="Unit Badges" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: DIVISIONAL INSIGNIA</div>
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG E: CONTACT!</div>
                             </div>
                         </div>
                     </div>
