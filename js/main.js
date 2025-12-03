@@ -148,30 +148,30 @@ function loadAnalytics() {
     // Google Analytics 4 - GDPR Compliant
     const GA_MEASUREMENT_ID = 'G-D48P9NHP49';
 
+    // Initialize dataLayer and gtag as GLOBAL functions (required by GA)
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){window.dataLayer.push(arguments);}
+
     // Load Google Analytics script
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+
+    // Wait for script to load before configuring
+    script.onload = function() {
+        window.gtag('js', new Date());
+        window.gtag('config', GA_MEASUREMENT_ID);
+
+        // Track custom consent event
+        window.gtag('event', 'cookie_consent', {
+            'event_category': 'engagement',
+            'event_label': 'user_accepted_cookies'
+        });
+
+        console.log('Google Analytics loaded and configured');
+    };
+
     document.head.appendChild(script);
-
-    // Initialize GA4
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID, {
-        'anonymize_ip': true, // GDPR compliance
-        'cookie_flags': 'SameSite=None;Secure',
-        'page_title': document.title,
-        'page_location': window.location.href
-    });
-
-    // Track custom events
-    gtag('event', 'cookie_consent', {
-        'event_category': 'engagement',
-        'event_label': 'user_accepted_cookies'
-    });
-
-    console.log('Google Analytics loaded');
 }
 
 // FORM - Enhanced error handling
