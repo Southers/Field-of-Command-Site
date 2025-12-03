@@ -8,20 +8,37 @@ if ('IntersectionObserver' in window) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                // Add fade-in effect
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 0.6s ease-in-out';
 
-                // Load the image if it hasn't been loaded yet
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
+                // Skip if image is already faded in
+                if (img.dataset.fadeComplete) {
+                    return;
                 }
 
-                // Fade in once loaded
-                img.onload = () => {
-                    img.style.opacity = '1';
-                };
+                // Check if image is already loaded (from cache)
+                if (img.complete && img.naturalHeight !== 0) {
+                    // Image already loaded, just fade it in
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.6s ease-in-out';
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                        img.dataset.fadeComplete = 'true';
+                    }, 10);
+                } else {
+                    // Image not loaded yet, set up fade-in on load
+                    img.style.opacity = '0';
+                    img.style.transition = 'opacity 0.6s ease-in-out';
+
+                    img.onload = () => {
+                        img.style.opacity = '1';
+                        img.dataset.fadeComplete = 'true';
+                    };
+
+                    // Handle error case
+                    img.onerror = () => {
+                        img.style.opacity = '1';
+                        img.dataset.fadeComplete = 'true';
+                    };
+                }
 
                 observer.unobserve(img);
             }
