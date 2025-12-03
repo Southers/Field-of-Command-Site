@@ -171,6 +171,64 @@ function loadAnalytics() {
     document.head.appendChild(gaScript2);
 
     console.log('✓ Google Analytics scripts injected');
+
+    // Setup event tracking after GA is loaded
+    setupEventTracking();
+}
+
+// Helper function to safely track events (only if gtag is available)
+function trackEvent(eventName, eventParams = {}) {
+    if (typeof gtag === 'function') {
+        gtag('event', eventName, eventParams);
+        console.log(`✓ Tracked event: ${eventName}`, eventParams);
+    }
+}
+
+// Setup all event tracking
+function setupEventTracking() {
+    // Track Steam wishlist button clicks
+    document.querySelectorAll('a[href*="steam"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('wishlist_click', {
+                'event_category': 'engagement',
+                'event_label': 'steam_wishlist',
+                'value': 1
+            });
+        });
+    });
+
+    // Track social media link clicks
+    document.querySelectorAll('a[href*="discord"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('social_click', {
+                'event_category': 'engagement',
+                'event_label': 'discord',
+                'link_url': link.href
+            });
+        });
+    });
+
+    document.querySelectorAll('a[href*="reddit"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('social_click', {
+                'event_category': 'engagement',
+                'event_label': 'reddit',
+                'link_url': link.href
+            });
+        });
+    });
+
+    document.querySelectorAll('a[href*="youtube"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('social_click', {
+                'event_category': 'engagement',
+                'event_label': 'youtube',
+                'link_url': link.href
+            });
+        });
+    });
+
+    console.log('✓ Event tracking configured');
 }
 
 // FORM - Enhanced error handling
@@ -198,6 +256,13 @@ form.addEventListener('submit', async (e) => {
             statusMsg.textContent = "/// TRANSMISSION RECEIVED.";
             statusMsg.className = "mt-4 text-xs font-bold text-tactical-red";
             form.reset();
+
+            // Track successful newsletter signup
+            trackEvent('newsletter_signup', {
+                'event_category': 'engagement',
+                'event_label': 'field_report_signup',
+                'value': 1
+            });
         } else {
             // Handle specific error cases
             let errorMessage = "/// FAILED.";
