@@ -220,3 +220,17 @@ form.addEventListener('submit', async (e) => {
         submitBtn.disabled = false;
     }
 });
+
+// INK STAMP EFFECT ON BUTTONS
+// Add stamp effect to wishlist and enlist buttons when clicked
+document.querySelectorAll('a[href*="steam"], button[type="submit"]').forEach(button => {
+    button.addEventListener('click', function(e) {
+        // Add stamped class
+        this.classList.add('stamped');
+
+        // Remove stamped class after animation completes
+        setTimeout(() => {
+            this.classList.remove('stamped');
+        }, 600);
+    });
+});

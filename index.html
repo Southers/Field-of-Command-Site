@@ -221,6 +221,275 @@
             transform: translateX(2px);
             box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
+
+        /* Classification Stamps */
+        .classified-stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #b91c1c;
+            opacity: 0.15;
+            transform: rotate(-12deg);
+            border: 4px solid #b91c1c;
+            padding: 10px 20px;
+            pointer-events: none;
+            letter-spacing: 0.3em;
+            z-index: 5;
+        }
+
+        /* Paper Texture Overlay */
+        #dossier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
+            opacity: 0.03;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            z-index: 1;
+        }
+
+        /* Ink Blot Bullets */
+        ul li::marker {
+            content: '●';
+            color: #b91c1c;
+            font-size: 1.2em;
+        }
+
+        /* Coffee Stain Effects */
+        .coffee-stain {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(139, 90, 43, 0.08) 0%,
+                rgba(139, 90, 43, 0.03) 50%,
+                transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .coffee-stain-1 {
+            top: 15%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .coffee-stain-2 {
+            bottom: 25%;
+            left: 3%;
+            width: 100px;
+            height: 100px;
+            opacity: 0.6;
+        }
+
+        .coffee-stain-3 {
+            top: 60%;
+            right: 8%;
+            width: 80px;
+            height: 80px;
+            opacity: 0.4;
+        }
+
+        /* Vintage Photo Enhancement */
+        .vintage-photo {
+            position: relative;
+        }
+
+        .vintage-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Redacted Text Effect */
+        .redacted {
+            position: relative;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                transparent 20%,
+                #1a1a1a 20%,
+                #1a1a1a 80%,
+                transparent 80%);
+            color: transparent;
+            user-select: none;
+            cursor: help;
+            transition: all 0.3s ease;
+        }
+
+        .redacted:hover {
+            background: transparent;
+            color: inherit;
+        }
+
+        /* Paper Curl on Hover */
+        section:hover {
+            box-shadow:
+                inset -2px -2px 4px rgba(0,0,0,0.05),
+                4px 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* File Folder Section Dividers */
+        .section-divider {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            z-index: 10;
+        }
+
+        .file-tab-divider {
+            position: relative;
+            height: 40px;
+            width: 300px;
+            background: linear-gradient(to right,
+                #d6d2c4 0%,
+                #e8e4d9 50%,
+                #d6d2c4 100%);
+            clip-path: polygon(
+                0 0,
+                15% 0,
+                18% 100%,
+                82% 100%,
+                85% 0,
+                100% 0,
+                100% 100%,
+                0 100%
+            );
+            border-top: 2px solid #c4b5a0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-label {
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: #1a1a1a;
+            opacity: 0.6;
+        }
+
+        /* Typewriter Animation */
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #b91c1c;
+            white-space: nowrap;
+            animation: typewriter 2s steps(40) 0.5s forwards,
+                       blink 0.75s step-end infinite;
+            width: 0;
+            display: inline-block;
+        }
+
+        /* Classified Watermark */
+        .classified-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            font-weight: bold;
+            color: #b91c1c;
+            opacity: 0.02;
+            letter-spacing: 1rem;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        /* Ink Stamp Effect on Button Click */
+        @keyframes stamp {
+            0% { transform: scale(0) rotate(-5deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(-5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(-5deg); opacity: 1; }
+        }
+
+        .stamped {
+            position: relative;
+        }
+
+        .stamped::after {
+            content: 'CONFIRMED';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-12deg);
+            font-size: 2rem;
+            color: #b91c1c;
+            opacity: 0.3;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            animation: stamp 0.3s ease-out;
+            pointer-events: none;
+        }
+
+        /* Animated Map Pins */
+        @keyframes pin-drop {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            60% { transform: translateY(5px) rotate(5deg); }
+            80% { transform: translateY(-3px) rotate(-2deg); }
+            100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        }
+
+        .map-pin {
+            animation: pin-drop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation-fill-mode: both;
+        }
+
+        .map-pin:nth-child(1) { animation-delay: 0.2s; }
+        .map-pin:nth-child(2) { animation-delay: 0.4s; }
+        .map-pin:nth-child(3) { animation-delay: 0.6s; }
+        .map-pin:nth-child(4) { animation-delay: 0.8s; }
+        .map-pin:nth-child(5) { animation-delay: 1.0s; }
+        .map-pin:nth-child(6) { animation-delay: 1.2s; }
+
+        /* Vignette/Faded Edges */
+        #dossier {
+            box-shadow:
+                inset 0 0 100px rgba(0,0,0,0.02),
+                inset 0 0 20px rgba(0,0,0,0.03);
+        }
+
+        /* Document Page Number */
+        .page-number {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: rgba(26, 26, 26, 0.4);
+            letter-spacing: 0.15em;
+            pointer-events: none;
+            z-index: 100;
+        }
     </style>
 </head>
 <body class="bg-neutral-900 text-ink-black selection:bg-tactical-red selection:text-white font-mono overflow-x-hidden">
@@ -284,13 +553,20 @@
         </nav>
 
         <!-- THE PAPER DOCUMENT -->
-        <main class="w-full max-w-5xl bg-paper-cream min-h-screen shadow-2xl relative border-x-2 border-ink-black/10 mt-4 overflow-hidden">
+        <main id="dossier" class="w-full max-w-5xl bg-paper-cream min-h-screen shadow-2xl relative border-x-2 border-ink-black/10 mt-4 overflow-hidden">
             <div class="absolute inset-0 bg-paper-texture opacity-60 pointer-events-none blend-multiply z-20"></div>
+
+            <!-- Coffee Stains -->
+            <div class="coffee-stain coffee-stain-1"></div>
+            <div class="coffee-stain coffee-stain-2"></div>
+            <div class="coffee-stain coffee-stain-3"></div>
             
             <div class="absolute top-8 right-8 border-4 border-tactical-red text-tactical-red px-4 py-1 font-header text-4xl transform -rotate-12 opacity-0 animate-stamp stamp-box z-10" style="animation-delay: 0.5s;">TOP SECRET</div>
 
             <!-- HERO SECTION: THE VISION -->
             <section id="briefing" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative">
+                <div class="classified-stamp" style="top: 30px; right: 30px;">CLASSIFIED</div>
+                <div class="classified-watermark">CONFIDENTIAL</div>
                 <div class="flex flex-col md:flex-row gap-12">
                     <div class="flex-1 z-30 animate-fade-up">
                         <div class="flex items-center gap-2 text-xs font-bold text-neutral-500 mb-4 tracking-widest">
@@ -300,7 +576,7 @@
                         </div>
                         
                         <h1 class="font-header text-6xl md:text-8xl leading-[0.85] mb-6">
-                            PERSISTENT. <br> <span class="text-tactical-red">SCALABLE.</span>
+                            <span class="typewriter">PERSISTENT.</span> <br> <span class="text-tactical-red">SCALABLE.</span>
                         </h1>
                         
                         <p class="text-lg leading-relaxed mb-8 max-w-xl border-l-4 border-tactical-red pl-6">
@@ -315,7 +591,7 @@
                     </div>
 
                     <!-- ATTACHED PHOTO 1 -->
-                    <div class="w-full md:w-80 relative transform rotate-2 hover:rotate-0 transition-transform duration-500 z-30 mt-8 md:mt-0 cursor-zoom-in group" onclick="openLightbox(this)">
+                    <div class="w-full md:w-80 relative transform rotate-2 hover:rotate-0 transition-transform duration-500 z-30 mt-8 md:mt-0 cursor-zoom-in group vintage-photo" onclick="openLightbox(this)">
                         <div class="paper-clip"></div>
                         <div class="bg-white p-3 pb-8 shadow-photo border border-neutral-300">
                             <img src="https://www.fieldofcommand.com/images/command.png" alt="Tactical Map" width="800" height="600" loading="eager" class="w-full grayscale contrast-125 border border-neutral-200 group-hover:contrast-100 transition-all">
@@ -325,8 +601,17 @@
                 </div>
             </section>
 
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION ALPHA ///</span>
+                </div>
+            </div>
+
             <!-- CAMPAIGN TIMELINE: EVOLUTION OF WARFARE -->
             <section id="campaign" class="p-8 md:p-16 border-b-2 border-ink-black/10 bg-paper-dark/30 reveal">
+                <div class="classified-stamp" style="top: 40px; right: 40px; opacity: 0.1;">SECRET</div>
+                <div class="classified-watermark">RESTRICTED</div>
                 <div class="flex flex-col md:flex-row justify-between items-end mb-8">
                     <div>
                         <h2 class="font-header text-4xl md:text-5xl mb-2">THE EVOLUTION OF WARFARE</h2>
@@ -343,7 +628,7 @@
                     <div class="relative border-l-2 border-ink-black ml-2 md:ml-4 space-y-10 pb-8">
                         
                         <!-- 1940 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-tactical-red rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1940 | WESTERN FRONT</span><span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
@@ -354,7 +639,7 @@
                         </div>
 
                         <!-- 1941 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1941 | MEDITERRANEAN</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: MANOEUVRE</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CROSSROADS</h3>
@@ -365,7 +650,7 @@
                         </div>
 
                         <!-- 1942 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1942 | NORTH AFRICA</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
@@ -376,7 +661,7 @@
                         </div>
 
                         <!-- 1943 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1943 | ITALY</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
@@ -387,7 +672,7 @@
                         </div>
 
                         <!-- 1944 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1944 | NORTH-WEST EUROPE</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: VERTICAL ENVELOPMENT</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CRUSADE</h3>
@@ -398,7 +683,7 @@
                         </div>
 
                         <!-- 1945 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1945 | GERMANY</span><span class="text-[10px] bg-tactical-red text-white px-2 uppercase">DOCTRINE: TOTAL VICTORY</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CAULDRON</h3>
@@ -411,8 +696,17 @@
                 </div>
             </section>
 
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION BRAVO ///</span>
+                </div>
+            </div>
+
             <!-- MECHANICS: THE ART OF COMMAND -->
             <section id="logistics" class="border-b-2 border-ink-black/10 reveal">
+                <div class="classified-stamp" style="top: 30px; right: 30px; opacity: 0.12;">TOP SECRET</div>
+                <div class="classified-watermark" style="opacity: 0.015;">OPERATIONAL</div>
                 <!-- ROW 1 -->
                 <div class="grid md:grid-cols-2 border-b-2 border-ink-black/10">
                     <!-- 1. OPERATIONAL INTENT -->
@@ -420,7 +714,7 @@
                         <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
                         <h2 class="font-header text-4xl mb-4">OPERATIONAL INTENT</h2>
                         <p class="text-sm leading-relaxed mb-6">
-                            No time to micromanage. Issue commands and <strong>Operational Intent</strong>. Define the objective, allocate resources, and let your deputies handle the execution.
+                            No time to micromanage. Issue commands and <strong class="redacted">Operational Intent</strong>. Define the objective, allocate resources, and let your deputies handle the execution.
                         </p>
                         <!-- Attached Photo: MAP -->
                         <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
@@ -555,8 +849,17 @@
                 </div>
             </section>
 
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION CHARLIE ///</span>
+                </div>
+            </div>
+
             <!-- DEVLOGS -->
             <section id="devlog" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative reveal">
+                <div class="classified-stamp" style="top: 25px; right: 25px; opacity: 0.1;">FOR OFFICIAL USE ONLY</div>
+                <div class="classified-watermark" style="opacity: 0.018;">INTELLIGENCE</div>
                 <h2 class="font-header text-4xl md:text-5xl mb-12 flex items-center gap-4">
                     <i data-lucide="file-text" class="w-8 h-8 text-tactical-red"></i> FIELD REPORTS
                 </h2>
@@ -643,6 +946,11 @@
     <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="" class="max-w-full max-h-screen border-4 border-white shadow-2xl transform scale-95 transition-transform duration-300">
         <div class="absolute bottom-8 text-white font-mono text-xs tracking-widest">CLICK ANYWHERE OR PRESS ESC TO CLOSE</div>
+    </div>
+
+    <!-- DOCUMENT PAGE NUMBER -->
+    <div class="page-number">
+        DOC. #4127-B // PAGE 01 OF 04 // CONFIDENTIAL
     </div>
 
     <script src="js/main.js"></script>
