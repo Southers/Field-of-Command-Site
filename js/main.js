@@ -145,30 +145,35 @@ function hideCookies() {
 
 // Analytics loader - only loads when consent is given
 function loadAnalytics() {
-    // Google Analytics 4 - GDPR Compliant
+    // Google Analytics 4 - GDPR Compliant (Standard Implementation)
     const GA_MEASUREMENT_ID = 'G-D48P9NHP49';
 
-    // Initialize dataLayer and gtag as GLOBAL functions (required by GA)
+    // Initialize dataLayer and gtag FIRST (before script loads)
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){window.dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag; // Make it globally accessible
+
+    // Set initial config immediately
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
 
     // Load Google Analytics script
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 
-    // Wait for script to load before configuring
+    // Log when loaded
     script.onload = function() {
-        window.gtag('js', new Date());
-        window.gtag('config', GA_MEASUREMENT_ID);
-
-        // Track custom consent event
-        window.gtag('event', 'cookie_consent', {
+        console.log('✓ Google Analytics loaded successfully');
+        // Track custom consent event after script loads
+        gtag('event', 'cookie_consent', {
             'event_category': 'engagement',
             'event_label': 'user_accepted_cookies'
         });
+    };
 
-        console.log('Google Analytics loaded and configured');
+    script.onerror = function() {
+        console.error('✗ Failed to load Google Analytics');
     };
 
     document.head.appendChild(script);
@@ -234,3 +239,101 @@ document.querySelectorAll('a[href*="steam"], button[type="submit"]').forEach(but
         }, 600);
     });
 });
+
+// CAROUSEL NAVIGATION
+const carouselContainer = document.getElementById('carousel-container');
+const carouselPrev = document.getElementById('carousel-prev');
+const carouselNext = document.getElementById('carousel-next');
+const carouselDots = document.querySelectorAll('.carousel-dot');
+
+if (carouselContainer && carouselPrev && carouselNext) {
+    let currentIndex = 0;
+    const cards = carouselContainer.querySelectorAll('.snap-start');
+    const totalCards = cards.length;
+
+    // Function to scroll to a specific card
+    function scrollToCard(index) {
+        if (index < 0 || index >= totalCards) return;
+
+        currentIndex = index;
+        const card = cards[index];
+        const scrollLeft = card.offsetLeft - carouselContainer.offsetLeft;
+
+        carouselContainer.scrollTo({
+            left: scrollLeft,
+            behavior: 'smooth'
+        });
+
+        updateNavigation();
+    }
+
+    // Update navigation button states and progress dots
+    function updateNavigation() {
+        // Update buttons
+        carouselPrev.disabled = currentIndex === 0;
+        carouselNext.disabled = currentIndex === totalCards - 1;
+
+        // Update progress dots
+        carouselDots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.remove('bg-ink-black/20');
+                dot.classList.add('bg-tactical-red');
+            } else {
+                dot.classList.remove('bg-tactical-red');
+                dot.classList.add('bg-ink-black/20');
+            }
+        });
+    }
+
+    // Navigation arrows
+    carouselPrev.addEventListener('click', () => {
+        scrollToCard(currentIndex - 1);
+    });
+
+    carouselNext.addEventListener('click', () => {
+        scrollToCard(currentIndex + 1);
+    });
+
+    // Progress dots
+    carouselDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            scrollToCard(index);
+        });
+    });
+
+    // Detect scroll position to update current index
+    let scrollTimeout;
+    carouselContainer.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const scrollLeft = carouselContainer.scrollLeft;
+            const containerWidth = carouselContainer.offsetWidth;
+
+            // Find which card is most visible
+            let newIndex = Math.round(scrollLeft / containerWidth);
+            newIndex = Math.max(0, Math.min(newIndex, totalCards - 1));
+
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateNavigation();
+            }
+        }, 100);
+    });
+
+    // Keyboard navigation
+    carouselContainer.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            scrollToCard(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            scrollToCard(currentIndex + 1);
+        }
+    });
+
+    // Initialize
+    updateNavigation();
+
+    // Re-initialize Lucide icons for carousel arrows
+    lucide.createIcons();
+}
