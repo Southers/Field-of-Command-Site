@@ -145,38 +145,27 @@ function hideCookies() {
 
 // Analytics loader - only loads when consent is given
 function loadAnalytics() {
-    // Google Analytics 4 - GDPR Compliant (Standard Implementation)
-    const GA_MEASUREMENT_ID = 'G-D48P9NHP49';
+    console.log('Loading Google Analytics...');
 
-    // Initialize dataLayer and gtag FIRST (before script loads)
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag; // Make it globally accessible
+    // Use Google's EXACT standard implementation - inject as-is
+    const gaScript1 = document.createElement('script');
+    gaScript1.async = true;
+    gaScript1.src = 'https://www.googletagmanager.com/gtag/js?id=G-D48P9NHP49';
 
-    // Set initial config immediately
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID);
+    const gaScript2 = document.createElement('script');
+    gaScript2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-D48P9NHP49');
+        console.log('✓ Google Analytics configured');
+    `;
 
-    // Load Google Analytics script
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    // Inject both scripts into head
+    document.head.appendChild(gaScript1);
+    document.head.appendChild(gaScript2);
 
-    // Log when loaded
-    script.onload = function() {
-        console.log('✓ Google Analytics loaded successfully');
-        // Track custom consent event after script loads
-        gtag('event', 'cookie_consent', {
-            'event_category': 'engagement',
-            'event_label': 'user_accepted_cookies'
-        });
-    };
-
-    script.onerror = function() {
-        console.error('✗ Failed to load Google Analytics');
-    };
-
-    document.head.appendChild(script);
+    console.log('✓ Google Analytics scripts injected');
 }
 
 // FORM - Enhanced error handling
