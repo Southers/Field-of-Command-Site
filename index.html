@@ -8,6 +8,10 @@
     <meta name="keywords" content="WWII RTS, Strategy Game, Field of Command, Steam Game, Wargame, Operational Level, UE5">
     <link rel="canonical" href="https://www.fieldofcommand.com/">
     <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://www.fieldofcommand.com https://www.transparenttextures.com https://www.google-analytics.com data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -16,6 +20,9 @@
     <meta property="og:description" content="Command the theatre, not the soldier. A persistent operational strategy game powered by Unreal Engine 5.">
     <meta property="og:image" content="https://www.fieldofcommand.com/images/command.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.fieldofcommand.com/images/command.png">
+    <meta name="twitter:title" content="Field of Command - Operational WWII RTS">
+    <meta name="twitter:description" content="Command the theatre, not the soldier. A persistent operational strategy game powered by Unreal Engine 5.">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -44,6 +51,7 @@
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome for brand icons only (Steam, Discord, etc.) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS -->
@@ -100,13 +108,387 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
         #lightbox { transition: opacity 0.3s ease; }
         #lightbox.hidden { pointer-events: none; opacity: 0; }
-        /* Nav Tabs */
-        .nav-tab {
-            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
-            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s;
+
+        /* Intelligence File Folder Navigation */
+        .file-tab {
+            position: relative;
+            background: linear-gradient(to bottom, #d6d2c4 0%, #e8e4d9 100%);
+            clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-top: 2px solid #c4b5a0;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            border-right: 1px solid rgba(0,0,0,0.1);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.1);
         }
-        .nav-tab:hover {
-            transform: translateY(-4px);
+
+        .file-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 8%;
+            right: 8%;
+            height: 3px;
+            background: #b91c1c;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .file-tab::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 0 0;
+            border-color: #a39580 transparent transparent transparent;
+            opacity: 0.4;
+        }
+
+        .file-tab:hover {
+            transform: translateY(-6px) rotate(0.5deg);
+            background: linear-gradient(to bottom, #e8e4d9 0%, #f5f1e6 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .file-tab:hover::before {
+            opacity: 1;
+        }
+
+        .file-tab-text {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+        }
+
+        /* Classified stamp effect on hover */
+        .file-tab:hover .file-tab-text::after {
+            content: '●';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b91c1c;
+            font-size: 6px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* Mobile file drawer animation */
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        #mobile-menu:not(.hidden) {
+            animation: slideInFromRight 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .mobile-file-item {
+            position: relative;
+            background: linear-gradient(135deg, #e8e4d9 0%, #d6d2c4 100%);
+            border-left: 4px solid #b91c1c;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .mobile-file-item::before {
+            content: '//';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b91c1c;
+            font-weight: bold;
+            font-size: 12px;
+            opacity: 0.5;
+        }
+
+        .mobile-file-item:hover {
+            background: #f5f1e6;
+            border-left-width: 6px;
+            transform: translateX(4px);
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .mobile-file-item:active {
+            transform: translateX(2px);
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Classification Stamps */
+        .classified-stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #b91c1c;
+            opacity: 0.15;
+            transform: rotate(-12deg);
+            border: 4px solid #b91c1c;
+            padding: 10px 20px;
+            pointer-events: none;
+            letter-spacing: 0.3em;
+            z-index: 5;
+        }
+
+        /* Paper Texture Overlay */
+        #dossier::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
+            opacity: 0.03;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            z-index: 1;
+        }
+
+        /* Ink Blot Bullets */
+        ul li::marker {
+            content: '●';
+            color: #b91c1c;
+            font-size: 1.2em;
+        }
+
+        /* Coffee Stain Effects */
+        .coffee-stain {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(139, 90, 43, 0.08) 0%,
+                rgba(139, 90, 43, 0.03) 50%,
+                transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .coffee-stain-1 {
+            top: 15%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .coffee-stain-2 {
+            bottom: 25%;
+            left: 3%;
+            width: 100px;
+            height: 100px;
+            opacity: 0.6;
+        }
+
+        .coffee-stain-3 {
+            top: 60%;
+            right: 8%;
+            width: 80px;
+            height: 80px;
+            opacity: 0.4;
+        }
+
+        /* Vintage Photo Enhancement */
+        .vintage-photo {
+            position: relative;
+        }
+
+        .vintage-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Redacted Text Effect */
+        .redacted {
+            position: relative;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                transparent 20%,
+                #1a1a1a 20%,
+                #1a1a1a 80%,
+                transparent 80%);
+            color: transparent;
+            user-select: none;
+            cursor: help;
+            transition: all 0.3s ease;
+        }
+
+        .redacted:hover {
+            background: transparent;
+            color: inherit;
+        }
+
+        /* Paper Curl on Hover */
+        section:hover {
+            box-shadow:
+                inset -2px -2px 4px rgba(0,0,0,0.05),
+                4px 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* File Folder Section Dividers */
+        .section-divider {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            z-index: 10;
+        }
+
+        .file-tab-divider {
+            position: relative;
+            height: 40px;
+            width: 300px;
+            background: linear-gradient(to right,
+                #d6d2c4 0%,
+                #e8e4d9 50%,
+                #d6d2c4 100%);
+            clip-path: polygon(
+                0 0,
+                15% 0,
+                18% 100%,
+                82% 100%,
+                85% 0,
+                100% 0,
+                100% 100%,
+                0 100%
+            );
+            border-top: 2px solid #c4b5a0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-label {
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: #1a1a1a;
+            opacity: 0.6;
+        }
+
+        /* Typewriter Animation */
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #b91c1c;
+            white-space: nowrap;
+            animation: typewriter 2s steps(40) 0.5s forwards,
+                       blink 0.75s step-end infinite;
+            width: 0;
+            display: inline-block;
+        }
+
+        /* Classified Watermark */
+        .classified-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            font-weight: bold;
+            color: #b91c1c;
+            opacity: 0.02;
+            letter-spacing: 1rem;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 1;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        /* Ink Stamp Effect on Button Click */
+        @keyframes stamp {
+            0% { transform: scale(0) rotate(-5deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(-5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(-5deg); opacity: 1; }
+        }
+
+        .stamped {
+            position: relative;
+        }
+
+        .stamped::after {
+            content: 'CONFIRMED';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-12deg);
+            font-size: 2rem;
+            color: #b91c1c;
+            opacity: 0.3;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            animation: stamp 0.3s ease-out;
+            pointer-events: none;
+        }
+
+        /* Animated Map Pins */
+        @keyframes pin-drop {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            60% { transform: translateY(5px) rotate(5deg); }
+            80% { transform: translateY(-3px) rotate(-2deg); }
+            100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        }
+
+        .map-pin {
+            animation: pin-drop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation-fill-mode: both;
+        }
+
+        .map-pin:nth-child(1) { animation-delay: 0.2s; }
+        .map-pin:nth-child(2) { animation-delay: 0.4s; }
+        .map-pin:nth-child(3) { animation-delay: 0.6s; }
+        .map-pin:nth-child(4) { animation-delay: 0.8s; }
+        .map-pin:nth-child(5) { animation-delay: 1.0s; }
+        .map-pin:nth-child(6) { animation-delay: 1.2s; }
+
+        /* Vignette/Faded Edges */
+        #dossier {
+            box-shadow:
+                inset 0 0 100px rgba(0,0,0,0.02),
+                inset 0 0 20px rgba(0,0,0,0.03);
+        }
+
+        /* Document Page Number */
+        .page-number {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: rgba(26, 26, 26, 0.4);
+            letter-spacing: 0.15em;
+            pointer-events: none;
+            z-index: 100;
         }
     </style>
 </head>
@@ -130,48 +512,71 @@
             </div>
             
             <div class="hidden md:flex gap-1 h-full items-end">
-                <a href="#briefing" class="px-6 py-3 bg-paper-cream border-t-2 border-x-2 border-transparent hover:border-ink-black/20 hover:bg-white transition-all text-xs font-bold tracking-widest h-10 flex items-center">BRIEFING</a>
-                <a href="#campaign" class="px-6 py-3 bg-paper-cream border-t-2 border-x-2 border-transparent hover:border-ink-black/20 hover:bg-white transition-all text-xs font-bold tracking-widest h-10 flex items-center">THEATRES</a>
-                <a href="#logistics" class="px-6 py-3 bg-paper-cream border-t-2 border-x-2 border-transparent hover:border-ink-black/20 hover:bg-white transition-all text-xs font-bold tracking-widest h-10 flex items-center">LOGISTICS</a>
-                <a href="#devlog" class="px-6 py-3 bg-paper-cream border-t-2 border-x-2 border-transparent hover:border-ink-black/20 hover:bg-white transition-all text-xs font-bold tracking-widest h-10 flex items-center">INTEL</a>
+                <a href="#briefing" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
+                    <span class="file-tab-text">BRIEFING</span>
+                </a>
+                <a href="#campaign" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
+                    <span class="file-tab-text">THEATRES</span>
+                </a>
+                <a href="#logistics" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
+                    <span class="file-tab-text">LOGISTICS</span>
+                </a>
+                <a href="#devlog" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
+                    <span class="file-tab-text">INTEL</span>
+                </a>
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" class="bg-tactical-red text-white px-4 py-1 text-xs font-bold hover:bg-red-800 transition-colors border border-ink-black shadow-sm flex items-center gap-2 animate-pulse-slow">
-                    <i data-lucide="crosshair" class="w-3 h-3"></i> <span class="hidden sm:inline">WISHLIST</span>
+                <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" aria-label="Wishlist on Steam" class="bg-tactical-red text-white px-4 py-1 text-xs font-bold hover:bg-red-800 transition-colors border border-ink-black shadow-sm flex items-center gap-2 animate-pulse-slow">
+                    <i data-lucide="crosshair" class="w-3 h-3" aria-hidden="true"></i> <span class="hidden sm:inline">WISHLIST</span>
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-ink-black hover:text-tactical-red"><i class="fa-solid fa-bars text-xl"></i></button>
+                <button id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" class="md:hidden p-2 text-ink-black hover:text-tactical-red"><i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i></button>
             </div>
         </nav>
 
         <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="fixed top-14 left-0 right-0 bg-paper-dark border-b-2 border-ink-black z-40 hidden md:hidden shadow-2xl transform origin-top animate-fade-up">
-            <div class="flex flex-col p-4 space-y-2">
-                <a href="#briefing" class="px-4 py-3 bg-paper-cream border border-ink-black/20 font-header text-xl hover:bg-white hover:text-tactical-red transition-colors">BRIEFING</a>
-                <a href="#campaign" class="px-4 py-3 bg-paper-cream border border-ink-black/20 font-header text-xl hover:bg-white hover:text-tactical-red transition-colors">THEATRES</a>
-                <a href="#logistics" class="px-4 py-3 bg-paper-cream border border-ink-black/20 font-header text-xl hover:bg-white hover:text-tactical-red transition-colors">LOGISTICS</a>
-                <a href="#devlog" class="px-4 py-3 bg-paper-cream border border-ink-black/20 font-header text-xl hover:bg-white hover:text-tactical-red transition-colors">INTEL</a>
+        <nav id="mobile-menu" aria-label="Mobile navigation" class="fixed top-14 left-0 right-0 bg-[#2a2a2a] border-b-2 border-ink-black z-40 hidden md:hidden shadow-2xl">
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#briefing" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
+                    <span class="relative z-10">BRIEFING</span>
+                </a>
+                <a href="#campaign" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
+                    <span class="relative z-10">THEATRES</span>
+                </a>
+                <a href="#logistics" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
+                    <span class="relative z-10">LOGISTICS</span>
+                </a>
+                <a href="#devlog" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
+                    <span class="relative z-10">INTEL</span>
+                </a>
             </div>
-        </div>
+        </nav>
 
         <!-- THE PAPER DOCUMENT -->
-        <main class="w-full max-w-5xl bg-paper-cream min-h-screen shadow-2xl relative border-x-2 border-ink-black/10 mt-4 overflow-hidden">
+        <main id="dossier" class="w-full max-w-5xl bg-paper-cream min-h-screen shadow-2xl relative border-x-2 border-ink-black/10 mt-4 overflow-hidden">
             <div class="absolute inset-0 bg-paper-texture opacity-60 pointer-events-none blend-multiply z-20"></div>
+
+            <!-- Coffee Stains -->
+            <div class="coffee-stain coffee-stain-1"></div>
+            <div class="coffee-stain coffee-stain-2"></div>
+            <div class="coffee-stain coffee-stain-3"></div>
             
             <div class="absolute top-8 right-8 border-4 border-tactical-red text-tactical-red px-4 py-1 font-header text-4xl transform -rotate-12 opacity-0 animate-stamp stamp-box z-10" style="animation-delay: 0.5s;">TOP SECRET</div>
 
             <!-- HERO SECTION: THE VISION -->
             <section id="briefing" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative">
+                <div class="classified-stamp" style="top: 30px; right: 30px;">CLASSIFIED</div>
+                <div class="classified-watermark">CONFIDENTIAL</div>
                 <div class="flex flex-col md:flex-row gap-12">
                     <div class="flex-1 z-30 animate-fade-up">
                         <div class="flex items-center gap-2 text-xs font-bold text-neutral-500 mb-4 tracking-widest">
-                            <span>INTELLIGENCE BREIF</span>
+                            <span>INTELLIGENCE BRIEF</span>
                             <span>//</span>
                             <span>TOP SECRET</span>
                         </div>
                         
                         <h1 class="font-header text-6xl md:text-8xl leading-[0.85] mb-6">
-                            PERSISTENT. <br> <span class="text-tactical-red">SCALABLE.</span>
+                            <span class="typewriter">PERSISTENT.</span> <br> <span class="text-tactical-red">SCALABLE.</span>
                         </h1>
                         
                         <p class="text-lg leading-relaxed mb-8 max-w-xl border-l-4 border-tactical-red pl-6">
@@ -186,18 +591,27 @@
                     </div>
 
                     <!-- ATTACHED PHOTO 1 -->
-                    <div class="w-full md:w-80 relative transform rotate-2 hover:rotate-0 transition-transform duration-500 z-30 mt-8 md:mt-0 cursor-zoom-in group" onclick="openLightbox(this)">
+                    <div class="w-full md:w-80 relative transform rotate-2 hover:rotate-0 transition-transform duration-500 z-30 mt-8 md:mt-0 cursor-zoom-in group vintage-photo" onclick="openLightbox(this)">
                         <div class="paper-clip"></div>
                         <div class="bg-white p-3 pb-8 shadow-photo border border-neutral-300">
-                            <img src="https://www.fieldofcommand.com/images/command.png" alt="Tactical Map" loading="eager" class="w-full grayscale contrast-125 border border-neutral-200 group-hover:contrast-100 transition-all">
+                            <img src="https://www.fieldofcommand.com/images/command.png" alt="Tactical Map" width="800" height="600" loading="eager" class="w-full grayscale contrast-125 border border-neutral-200 group-hover:contrast-100 transition-all">
                             <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center tracking-widest">FIG A: THEATRE OPERATIONS (1940-1945)</div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION ALPHA ///</span>
+                </div>
+            </div>
+
             <!-- CAMPAIGN TIMELINE: EVOLUTION OF WARFARE -->
             <section id="campaign" class="p-8 md:p-16 border-b-2 border-ink-black/10 bg-paper-dark/30 reveal">
+                <div class="classified-stamp" style="top: 40px; right: 40px; opacity: 0.1;">SECRET</div>
+                <div class="classified-watermark">RESTRICTED</div>
                 <div class="flex flex-col md:flex-row justify-between items-end mb-8">
                     <div>
                         <h2 class="font-header text-4xl md:text-5xl mb-2">THE EVOLUTION OF WARFARE</h2>
@@ -214,76 +628,85 @@
                     <div class="relative border-l-2 border-ink-black ml-2 md:ml-4 space-y-10 pb-8">
                         
                         <!-- 1940 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-tactical-red rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1940 | WESTERN FRONT</span><span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
                             <p class="text-sm max-w-lg"><strong>Dynamo to Aerial.</strong> Face the Blitzkrieg with limited resources. Static defense lines, desperate holding actions, and the race to survive.</p>
                             <div class="mt-4 border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
-                                <img src="images/timeline/1940.png" alt="Dunkirk 1940 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="images/timeline/1940.png" alt="Dunkirk 1940 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                             </div>
                         </div>
 
                         <!-- 1941 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1941 | MEDITERRANEAN</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: MANOEUVRE</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CROSSROADS</h3>
                             <p class="text-sm max-w-lg"><strong>Compass to Crusader.</strong> War becomes a battle of supply lines. Long-range logistics and mobile armored columns in a vast, open theatre.</p>
                             <div class="mt-4 border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
-                                <img src="images/timeline/1941.png" alt="North Africa 1941 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="images/timeline/1941.png" alt="North Africa 1941 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                             </div>
                         </div>
 
                         <!-- 1942 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1942 | NORTH AFRICA</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
                             <p class="text-sm max-w-lg"><strong>Supercharge to Torch.</strong> The introduction of massed artillery and heavy armor reserves. Large-scale set-piece offensives aimed at breaking the line and destroying the Afrika Korps.</p>
                             <div class="mt-4 border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
-                                <img src="images/timeline/1942.png" alt="El Alamein 1942 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="images/timeline/1942.png" alt="El Alamein 1942 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                             </div>
                         </div>
 
                         <!-- 1943 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1943 | ITALY</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
                             <p class="text-sm max-w-lg"><strong>Husky to Diadem.</strong> The first major amphibious landings into Europe. Coordinating multi-brigade assaults and air support in difficult mountainous terrain.</p>
                             <div class="mt-4 border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
-                                <img src="images/timeline/1943.png" alt="Italy 1943 Concept Art" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="images/timeline/1943.png" alt="Italy 1943 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                             </div>
                         </div>
 
                         <!-- 1944 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1944 | NORTH-WEST EUROPE</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: VERTICAL ENVELOPMENT</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CRUSADE</h3>
                             <p class="text-sm max-w-lg"><strong>Overlord to Market Garden.</strong> Corps-level maneuver. Integrating airborne operations to seize bridges behind enemy lines.</p>
                             <div class="mt-4 border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
-                                <img src="images/timeline/1944.png" alt="North-West Europe 1944 Concept Art (Placeholder)" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="images/timeline/1944.png" alt="North-West Europe 1944 Concept Art (Placeholder)" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                             </div>
                         </div>
 
                         <!-- 1945 -->
-                        <div class="relative pl-8 md:pl-12 group">
+                        <div class="relative pl-8 md:pl-12 group map-pin">
                             <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
                             <div class="flex justify-between items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1945 | GERMANY</span><span class="text-[10px] bg-tactical-red text-white px-2 uppercase">DOCTRINE: TOTAL VICTORY</span></div>
                             <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CAULDRON</h3>
                             <p class="text-sm max-w-lg"><strong>Veritable to Plunder.</strong> The Rhine Crossing. Complex river crossings and the final crushing of resistance in the heart of the Reich.</p>
                             <div class="mt-4 border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500 max-w-md">
-                                <img src="images/timeline/1945.png" alt="Germany 1945 Concept Art (Placeholder)" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="images/timeline/1945.png" alt="Germany 1945 Concept Art (Placeholder)" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION BRAVO ///</span>
+                </div>
+            </div>
+
             <!-- MECHANICS: THE ART OF COMMAND -->
-            <section id="mechanics" class="border-b-2 border-ink-black/10 reveal">
+            <section id="logistics" class="border-b-2 border-ink-black/10 reveal">
+                <div class="classified-stamp" style="top: 30px; right: 30px; opacity: 0.12;">TOP SECRET</div>
+                <div class="classified-watermark" style="opacity: 0.015;">OPERATIONAL</div>
                 <!-- ROW 1 -->
                 <div class="grid md:grid-cols-2 border-b-2 border-ink-black/10">
                     <!-- 1. OPERATIONAL INTENT -->
@@ -291,13 +714,13 @@
                         <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
                         <h2 class="font-header text-4xl mb-4">OPERATIONAL INTENT</h2>
                         <p class="text-sm leading-relaxed mb-6">
-                            No time to micromanage. Issue commands and <strong>Operational Intent</strong>. Define the objective, allocate resources, and let your deputies handle the execution.
+                            No time to micromanage. Issue commands and <strong class="redacted">Operational Intent</strong>. Define the objective, allocate resources, and let your deputies handle the execution.
                         </p>
                         <!-- Attached Photo: MAP -->
                         <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%;"></div>
                             <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/tactical.png" alt="Operational Map" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="https://www.fieldofcommand.com/images/tactical.png" alt="Operational Map" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                 <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG A: OPERATIONAL PLANNING</div>
                             </div>
                         </div>
@@ -314,7 +737,7 @@
                         <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%; background: #444;"></div>
                             <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/structure.png" alt="Hierarchy Tree" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <img src="https://www.fieldofcommand.com/images/structure.png" alt="Hierarchy Tree" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
                                 <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 8TH ARMY OOB</div>
                             </div>
                         </div>
@@ -335,7 +758,7 @@
                         <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%;"></div>
                             <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/logistics.png" alt="Supply Truck" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <img src="https://www.fieldofcommand.com/images/logistics.png" alt="Supply Truck" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                 <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG C: SUPPLY LINES</div>
                             </div>
                         </div>
@@ -352,7 +775,7 @@
                         <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%; background: #444;"></div>
                             <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/persistance.png" alt="Unit Badges" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <img src="https://www.fieldofcommand.com/images/persistance.png" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
                                 <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: BATTLE HONOURS</div>
                             </div>
                         </div>
@@ -369,7 +792,7 @@
                         <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
                             <div class="paper-clip" style="right: 50%; background: #444;"></div>
                             <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/field.png" alt="Unit Badges" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <img src="https://www.fieldofcommand.com/images/field.png" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
                                 <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG E: CONTACT!</div>
                             </div>
                         </div>
@@ -395,7 +818,7 @@
                                 <div class="font-header text-2xl text-neutral-500 w-24">PHASE II</div>
                                 <div>
                                     <h3 class="font-bold text-lg mb-1">NORWAY 1940</h3>
-                                    <p class="text-xs max-w-sm">Experience an alternative to the distaster at Dunkirk, with the Allied expeditionary force in Norway</p>
+                                    <p class="text-xs max-w-sm">Experience an alternative to the disaster at Dunkirk, with the Allied expeditionary force in Norway</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
@@ -419,15 +842,24 @@
                     <div class="w-full md:w-96 relative transform rotate-1 hover:rotate-0 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this)">
                         <div class="paper-clip" style="right: 40%; background: #444;"></div>
                         <div class="bg-paper-cream p-3 pb-8 shadow-photo border border-neutral-600">
-                            <img src="https://www.fieldofcommand.com/images/roadmap.png" alt="Global Roadmap" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                            <img src="https://www.fieldofcommand.com/images/roadmap.png" alt="Global Roadmap" width="800" height="600" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
                             <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">CLASSIFIED: LONG TERM STRATEGY</div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION CHARLIE ///</span>
+                </div>
+            </div>
+
             <!-- DEVLOGS -->
             <section id="devlog" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative reveal">
+                <div class="classified-stamp" style="top: 25px; right: 25px; opacity: 0.1;">FOR OFFICIAL USE ONLY</div>
+                <div class="classified-watermark" style="opacity: 0.018;">INTELLIGENCE</div>
                 <h2 class="font-header text-4xl md:text-5xl mb-12 flex items-center gap-4">
                     <i data-lucide="file-text" class="w-8 h-8 text-tactical-red"></i> FIELD REPORTS
                 </h2>
@@ -511,111 +943,16 @@
     </div>
 
     <!-- LIGHTBOX -->
-    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" class="max-w-full max-h-screen border-4 border-white shadow-2xl transform scale-95 transition-transform duration-300">
-        <div class="absolute bottom-8 text-white font-mono text-xs tracking-widest">CLICK ANYWHERE TO CLOSE</div>
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-screen border-4 border-white shadow-2xl transform scale-95 transition-transform duration-300">
+        <div class="absolute bottom-8 text-white font-mono text-xs tracking-widest">CLICK ANYWHERE OR PRESS ESC TO CLOSE</div>
     </div>
 
-    <script>
-        lucide.createIcons();
+    <!-- DOCUMENT PAGE NUMBER -->
+    <div class="page-number">
+        DOC. #4127-B // PAGE 01 OF 04 // CONFIDENTIAL
+    </div>
 
-        // MOBILE MENU
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // SCROLL REVEAL
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
-
-        // LIGHTBOX
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = imgSrc;
-            lightbox.classList.remove('hidden');
-            setTimeout(() => {
-                lightbox.style.opacity = '1';
-                lightboxImg.style.transform = 'scale(1)';
-            }, 10);
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightbox.style.opacity = '0';
-            lightboxImg.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                lightbox.classList.add('hidden');
-            }, 300);
-        }
-
-        // COOKIES
-        setTimeout(() => {
-            if(!localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookie-banner').classList.remove('translate-y-full');
-            }
-        }, 1000);
-
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            hideCookies();
-        }
-
-        function hideCookies() {
-            document.getElementById('cookie-banner').classList.add('translate-y-full');
-        }
-
-        // FORM
-        const form = document.getElementById('signup-form');
-        const statusMsg = document.getElementById('status-msg');
-        const submitBtn = document.getElementById('submit-btn');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            submitBtn.innerHTML = "<span class='animate-pulse'>...</span>";
-            submitBtn.disabled = true;
-            try {
-                const response = await fetch('/api/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email })
-                });
-                if (response.ok) {
-                    statusMsg.textContent = "/// TRANSMISSION RECEIVED.";
-                    statusMsg.className = "mt-4 text-xs font-bold text-tactical-red";
-                    form.reset();
-                } else throw new Error();
-            } catch (error) {
-                statusMsg.textContent = "/// FAILED.";
-                statusMsg.className = "mt-4 text-xs font-bold text-ink-black";
-            } finally {
-                submitBtn.innerHTML = "ENLIST";
-                submitBtn.disabled = false;
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
