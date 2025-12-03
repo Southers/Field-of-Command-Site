@@ -620,23 +620,42 @@
                         </p>
                     </div>
                     <div class="text-[10px] font-bold uppercase tracking-widest text-neutral-500 mt-4 md:mt-0">
-                        SCROLL FOR FULL DOSSIER &darr;
+                        <span class="hidden md:inline">SWIPE OR USE ARROWS &larr; &rarr;</span>
+                        <span class="md:hidden">SWIPE FOR FULL DOSSIER &rarr;</span>
                     </div>
                 </div>
 
-                <div class="relative bg-paper-cream border-2 border-ink-black/20 p-6 h-[400px] overflow-y-auto timeline-scroll shadow-inner-file">
-                    <div class="relative border-l-2 border-ink-black ml-2 md:ml-4 space-y-10 pb-8">
-                        
-                        <!-- 1940 -->
-                        <div class="relative pl-8 md:pl-12 group map-pin">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 bg-tactical-red rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1940 | WESTERN FRONT</span><span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span></div>
-                                    <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
-                                    <p class="text-sm"><strong>Dynamo to Aerial.</strong> Face the Blitzkrieg with limited resources. Static defense lines, desperate holding actions, and the race to survive.</p>
+                <!-- Carousel Container -->
+                <div class="relative">
+                    <!-- Navigation Arrows -->
+                    <button id="carousel-prev" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-tactical-red text-white w-12 h-12 items-center justify-center hover:bg-red-800 transition-colors border-2 border-ink-black shadow-lg disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Previous year">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <button id="carousel-next" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-tactical-red text-white w-12 h-12 items-center justify-center hover:bg-red-800 transition-colors border-2 border-ink-black shadow-lg disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Next year">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+
+                    <!-- Carousel Scroll Container -->
+                    <div id="carousel-container" class="relative bg-paper-cream border-2 border-ink-black/20 overflow-x-auto overflow-y-hidden timeline-scroll shadow-inner-file snap-x snap-mandatory scroll-smooth" style="scrollbar-width: thin;">
+                        <div class="flex gap-0 min-h-[500px]">
+
+                        <!-- 1940 Card -->
+                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="font-header text-6xl md:text-7xl text-tactical-red leading-none">1940</div>
+                                <div class="flex-1 pt-2">
+                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
+                                        <span class="text-xs font-bold text-neutral-500">WESTERN FRONT</span>
+                                        <span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span>
+                                    </div>
+                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
                                 </div>
-                                <div class="w-full md:w-64 flex-shrink-0">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="flex-1">
+                                    <p class="text-sm md:text-base leading-relaxed"><strong>Dynamo to Aerial.</strong> Face the Blitzkrieg with limited resources. Static defense lines, desperate holding actions, and the race to survive.</p>
+                                </div>
+                                <div class="w-full md:w-80 flex-shrink-0">
                                     <div class="border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">
                                         <img src="images/timeline/1940.png" alt="Dunkirk 1940 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                     </div>
@@ -644,16 +663,23 @@
                             </div>
                         </div>
 
-                        <!-- 1941 -->
-                        <div class="relative pl-8 md:pl-12 group map-pin">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1941 | MEDITERRANEAN</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: MANOEUVRE</span></div>
-                                    <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CROSSROADS</h3>
-                                    <p class="text-sm"><strong>Compass to Crusader.</strong> War becomes a battle of supply lines. Long-range logistics and mobile armored columns in a vast, open theatre.</p>
+                        <!-- 1941 Card -->
+                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1941</div>
+                                <div class="flex-1 pt-2">
+                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
+                                        <span class="text-xs font-bold text-neutral-500">MEDITERRANEAN</span>
+                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: MANOEUVRE</span>
+                                    </div>
+                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">CROSSROADS</h3>
                                 </div>
-                                <div class="w-full md:w-64 flex-shrink-0">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="flex-1">
+                                    <p class="text-sm md:text-base leading-relaxed"><strong>Compass to Crusader.</strong> War becomes a battle of supply lines. Long-range logistics and mobile armored columns in a vast, open theatre.</p>
+                                </div>
+                                <div class="w-full md:w-80 flex-shrink-0">
                                     <div class="border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
                                         <img src="images/timeline/1941.png" alt="North Africa 1941 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                     </div>
@@ -661,16 +687,23 @@
                             </div>
                         </div>
 
-                        <!-- 1942 -->
-                        <div class="relative pl-8 md:pl-12 group map-pin">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1942 | NORTH AFRICA</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span></div>
-                                    <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
-                                    <p class="text-sm"><strong>Supercharge to Torch.</strong> The introduction of massed artillery and heavy armor reserves. Large-scale set-piece offensives aimed at breaking the line and destroying the Afrika Korps.</p>
+                        <!-- 1942 Card -->
+                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1942</div>
+                                <div class="flex-1 pt-2">
+                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
+                                        <span class="text-xs font-bold text-neutral-500">NORTH AFRICA</span>
+                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span>
+                                    </div>
+                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
                                 </div>
-                                <div class="w-full md:w-64 flex-shrink-0">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="flex-1">
+                                    <p class="text-sm md:text-base leading-relaxed"><strong>Supercharge to Torch.</strong> The introduction of massed artillery and heavy armor reserves. Large-scale set-piece offensives aimed at breaking the line and destroying the Afrika Korps.</p>
+                                </div>
+                                <div class="w-full md:w-80 flex-shrink-0">
                                     <div class="border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">
                                         <img src="images/timeline/1942.png" alt="El Alamein 1942 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                     </div>
@@ -678,16 +711,23 @@
                             </div>
                         </div>
 
-                        <!-- 1943 -->
-                        <div class="relative pl-8 md:pl-12 group map-pin">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1943 | ITALY</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span></div>
-                                    <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
-                                    <p class="text-sm"><strong>Husky to Diadem.</strong> The first major amphibious landings into Europe. Coordinating multi-brigade assaults and air support in difficult mountainous terrain.</p>
+                        <!-- 1943 Card -->
+                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1943</div>
+                                <div class="flex-1 pt-2">
+                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
+                                        <span class="text-xs font-bold text-neutral-500">ITALY</span>
+                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span>
+                                    </div>
+                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
                                 </div>
-                                <div class="w-full md:w-64 flex-shrink-0">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="flex-1">
+                                    <p class="text-sm md:text-base leading-relaxed"><strong>Husky to Diadem.</strong> The first major amphibious landings into Europe. Coordinating multi-brigade assaults and air support in difficult mountainous terrain.</p>
+                                </div>
+                                <div class="w-full md:w-80 flex-shrink-0">
                                     <div class="border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
                                         <img src="images/timeline/1943.png" alt="Italy 1943 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                     </div>
@@ -695,16 +735,23 @@
                             </div>
                         </div>
 
-                        <!-- 1944 -->
-                        <div class="relative pl-8 md:pl-12 group map-pin">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1944 | NORTH-WEST EUROPE</span><span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: VERTICAL ENVELOPMENT</span></div>
-                                    <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CRUSADE</h3>
-                                    <p class="text-sm"><strong>Overlord to Market Garden.</strong> Multi-corps invasion. Coordinate airborne drops with armored thrusts—seize bridges, punch through bocage, outflank the Rhine.</p>
+                        <!-- 1944 Card -->
+                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1944</div>
+                                <div class="flex-1 pt-2">
+                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
+                                        <span class="text-xs font-bold text-neutral-500">NORTH-WEST EUROPE</span>
+                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: VERTICAL ENVELOPMENT</span>
+                                    </div>
+                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">CRUSADE</h3>
                                 </div>
-                                <div class="w-full md:w-64 flex-shrink-0">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="flex-1">
+                                    <p class="text-sm md:text-base leading-relaxed"><strong>Overlord to Market Garden.</strong> Multi-corps invasion. Coordinate airborne drops with armored thrusts—seize bridges, punch through bocage, outflank the Rhine.</p>
+                                </div>
+                                <div class="w-full md:w-80 flex-shrink-0">
                                     <div class="border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">
                                         <img src="images/timeline/1944.png" alt="North-West Europe 1944 Concept Art (Placeholder)" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                     </div>
@@ -712,22 +759,40 @@
                             </div>
                         </div>
 
-                        <!-- 1945 -->
-                        <div class="relative pl-8 md:pl-12 group map-pin">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 bg-ink-black rounded-full border-2 border-paper-cream"></div>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-                                <div class="flex-1">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-1"><span class="text-xs font-bold text-neutral-500">1945 | GERMANY</span><span class="text-[10px] bg-tactical-red text-white px-2 uppercase">DOCTRINE: TOTAL VICTORY</span></div>
-                                    <h3 class="font-header text-3xl mb-1 group-hover:text-tactical-red transition-colors">CAULDRON</h3>
-                                    <p class="text-sm"><strong>Veritable to Plunder.</strong> The Rhine Crossing. Complex river crossings and the final crushing of resistance in the heart of the Reich.</p>
+                        <!-- 1945 Card -->
+                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="font-header text-6xl md:text-7xl text-tactical-red leading-none">1945</div>
+                                <div class="flex-1 pt-2">
+                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
+                                        <span class="text-xs font-bold text-neutral-500">GERMANY</span>
+                                        <span class="text-[10px] bg-tactical-red text-white px-2 uppercase">DOCTRINE: TOTAL VICTORY</span>
+                                    </div>
+                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">CAULDRON</h3>
                                 </div>
-                                <div class="w-full md:w-64 flex-shrink-0">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <div class="flex-1">
+                                    <p class="text-sm md:text-base leading-relaxed"><strong>Veritable to Plunder.</strong> The Rhine Crossing. Complex river crossings and the final crushing of resistance in the heart of the Reich.</p>
+                                </div>
+                                <div class="w-full md:w-80 flex-shrink-0">
                                     <div class="border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
                                         <img src="images/timeline/1945.png" alt="Germany 1945 Concept Art (Placeholder)" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Indicators -->
+                    <div class="flex justify-center gap-2 mt-4">
+                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="0" aria-label="Go to 1940"></button>
+                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="1" aria-label="Go to 1941"></button>
+                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="2" aria-label="Go to 1942"></button>
+                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="3" aria-label="Go to 1943"></button>
+                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="4" aria-label="Go to 1944"></button>
+                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="5" aria-label="Go to 1945"></button>
                     </div>
                 </div>
             </section>
