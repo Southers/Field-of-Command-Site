@@ -129,13 +129,7 @@ function hideCookies() {
 // Analytics loader - only loads when consent is given
 function loadAnalytics() {
     // Google Analytics 4 - GDPR Compliant
-    // Replace 'G-XXXXXXXXXX' with your actual Google Analytics 4 Measurement ID
-    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // TODO: Replace with your GA4 ID
-
-    if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
-        console.log('Analytics consent granted - waiting for GA4 Measurement ID');
-        return;
-    }
+    const GA_MEASUREMENT_ID = 'G-D48P9NHP49';
 
     // Load Google Analytics script
     const script = document.createElement('script');
