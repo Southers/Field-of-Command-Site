@@ -124,15 +124,19 @@ document.addEventListener('keydown', (e) => {
 
 // COOKIES - GDPR Compliant Cookie Consent Management
 setTimeout(() => {
+    console.log('Checking cookie consent status...');
     if(!localStorage.getItem('cookiesAccepted')) {
+        console.log('No consent found - showing banner');
         document.getElementById('cookie-banner').classList.remove('translate-y-full');
     } else {
+        console.log('Consent already given - loading analytics');
         // If cookies are already accepted, load analytics
         loadAnalytics();
     }
 }, 1000);
 
 function acceptCookies() {
+    console.log('User accepted cookies');
     localStorage.setItem('cookiesAccepted', 'true');
     localStorage.setItem('cookiesAcceptedDate', new Date().toISOString());
     hideCookies();
@@ -140,6 +144,7 @@ function acceptCookies() {
 }
 
 function hideCookies() {
+    console.log('Hiding cookie banner');
     document.getElementById('cookie-banner').classList.add('translate-y-full');
 }
 
