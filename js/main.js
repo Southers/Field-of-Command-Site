@@ -145,30 +145,35 @@ function hideCookies() {
 
 // Analytics loader - only loads when consent is given
 function loadAnalytics() {
-    // Google Analytics 4 - GDPR Compliant
+    // Google Analytics 4 - GDPR Compliant (Standard Implementation)
     const GA_MEASUREMENT_ID = 'G-D48P9NHP49';
 
-    // Initialize dataLayer and gtag as GLOBAL functions (required by GA)
+    // Initialize dataLayer and gtag FIRST (before script loads)
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){window.dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag; // Make it globally accessible
+
+    // Set initial config immediately
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
 
     // Load Google Analytics script
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 
-    // Wait for script to load before configuring
+    // Log when loaded
     script.onload = function() {
-        window.gtag('js', new Date());
-        window.gtag('config', GA_MEASUREMENT_ID);
-
-        // Track custom consent event
-        window.gtag('event', 'cookie_consent', {
+        console.log('✓ Google Analytics loaded successfully');
+        // Track custom consent event after script loads
+        gtag('event', 'cookie_consent', {
             'event_category': 'engagement',
             'event_label': 'user_accepted_cookies'
         });
+    };
 
-        console.log('Google Analytics loaded and configured');
+    script.onerror = function() {
+        console.error('✗ Failed to load Google Analytics');
     };
 
     document.head.appendChild(script);
