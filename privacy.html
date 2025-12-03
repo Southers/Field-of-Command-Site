@@ -15,38 +15,137 @@
     <a href="index.html" class="back-link">&larr; RETURN TO HQ</a>
     
     <h1>Privacy Protocols</h1>
-    <p><strong>Last Updated:</strong> November 2025</p>
+    <p><strong>Last Updated:</strong> 3 December 2025</p>
+    <p><strong>Effective Date:</strong> 3 December 2025</p>
 
-    <h2>1. Identity</h2>
+    <h2>1. Data Controller Identity</h2>
     <p>This terminal is operated by the developers of <strong>Field of Command</strong>.</p>
+    <p><strong>Contact for Data Protection Queries:</strong> [Your Email Address]</p>
+    <p>For any questions about how we handle your personal data, please contact us at the address above.</p>
 
-    <h2>2. Intelligence Collection</h2>
+    <h2>2. Legal Basis for Processing</h2>
+    <p>We process your personal data under the following legal bases:</p>
+    <ul>
+        <li><strong>Consent:</strong> When you sign up for our newsletter or accept analytics cookies, you provide explicit consent for us to process your data.</li>
+        <li><strong>Legitimate Interest:</strong> To improve our website and understand how visitors use our services.</li>
+    </ul>
+
+    <h2>3. Intelligence Collection</h2>
     <p>We only collect the following data when you voluntarily enlist:</p>
     <ul>
-        <li><strong>Email Address:</strong> Collected via our sign-up form for the Field Report newsletter.</li>
-        <li><strong>Cookies:</strong> Used for anonymous operational analytics (Google Analytics) to improve mission parameters.</li>
+        <li><strong>Email Address:</strong> Collected via our sign-up form for the Field Report newsletter. Stored in Cloudflare KV database.</li>
+        <li><strong>IP Address:</strong> Temporarily stored for rate limiting purposes (deleted after 1 hour).</li>
+        <li><strong>Analytics Cookies:</strong> Used only if you accept cookies. Google Analytics collects anonymized usage data (IP anonymization enabled).</li>
+    </ul>
+    <p><strong>Data We Do NOT Collect:</strong> We do not collect names, addresses, phone numbers, payment information, or any other personal identifiers beyond email addresses.</p>
+
+    <h2>4. Purpose of Data Processing</h2>
+    <p>We use your email address solely to:</p>
+    <ul>
+        <li>Send development updates and "Field Report" newsletters.</li>
+        <li>Send invitations to Alpha/Beta playtests.</li>
+        <li>Respond to your data protection requests.</li>
+    </ul>
+    <p>We use analytics data to:</p>
+    <ul>
+        <li>Understand how visitors use our website.</li>
+        <li>Improve user experience and website performance.</li>
+        <li>Track which features are most popular.</li>
+    </ul>
+    <p><strong>We do not sell, rent, or trade your data to any third parties.</strong></p>
+
+    <h2>5. Data Retention</h2>
+    <p>We retain your personal data for the following periods:</p>
+    <ul>
+        <li><strong>Email Addresses:</strong> Until you unsubscribe or request deletion, whichever comes first.</li>
+        <li><strong>IP Addresses (Rate Limiting):</strong> Maximum 1 hour, then automatically deleted.</li>
+        <li><strong>Analytics Data:</strong> Google Analytics retains anonymized data for 14 months (configurable in GA4 settings).</li>
+        <li><strong>Cookie Consent Records:</strong> Stored locally in your browser until you clear browser data.</li>
     </ul>
 
-    <h2>3. Operational Use</h2>
-    <p>We use your email address solely to transmit:</p>
+    <h2>6. Third-Party Data Processors</h2>
+    <p>We use the following trusted third-party services to process your data:</p>
     <ul>
-        <li>Development updates and "Field Report" newsletters.</li>
-        <li>Invitations to Alpha/Beta playtests.</li>
+        <li><strong>Cloudflare Pages & KV:</strong> Hosts our website and stores newsletter email addresses. Data stored in EU/UK regions where possible. <a href="https://www.cloudflare.com/en-gb/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+        <li><strong>Google Analytics 4:</strong> Analyzes site traffic with IP anonymization enabled. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
     </ul>
-    <p>We do not sell, rent, or trade your data to enemy factions or third parties.</p>
+    <p><strong>International Transfers:</strong> Cloudflare and Google may transfer data to the USA under Standard Contractual Clauses (SCCs) approved by the UK ICO. These transfers are protected by appropriate safeguards.</p>
 
-    <h2>4. Third-Party Infrastructure</h2>
-    <p>We use the following secure channels:</p>
+    <h2>7. Cookies & Tracking Technologies</h2>
+    <p>We use cookies only with your explicit consent. You can accept or reject cookies via our cookie banner.</p>
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; margin-top: 10px; border-collapse: collapse;">
+        <tr style="background: #d6d2c4;">
+            <th>Cookie Name</th>
+            <th>Purpose</th>
+            <th>Duration</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td>cookiesAccepted</td>
+            <td>Stores cookie consent preference</td>
+            <td>Permanent (until cleared)</td>
+            <td>Essential</td>
+        </tr>
+        <tr>
+            <td>_ga</td>
+            <td>Google Analytics - distinguishes users</td>
+            <td>2 years</td>
+            <td>Analytics (Requires Consent)</td>
+        </tr>
+        <tr>
+            <td>_ga_*</td>
+            <td>Google Analytics - session data</td>
+            <td>2 years</td>
+            <td>Analytics (Requires Consent)</td>
+        </tr>
+    </table>
+    <p style="margin-top: 10px;"><strong>Note:</strong> Analytics cookies are ONLY set if you click "CONFIRM" on the cookie banner.</p>
+
+    <h2>8. Your Rights Under UK GDPR</h2>
+    <p>You have the following rights regarding your personal data:</p>
     <ul>
-        <li><strong>Cloudflare:</strong> Hosts our infrastructure and database.</li>
-        <li><strong>Google Analytics:</strong> Analyzes site traffic (anonymized).</li>
+        <li><strong>Right of Access:</strong> Request a copy of all personal data we hold about you.</li>
+        <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete data.</li>
+        <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> Request deletion of your personal data.</li>
+        <li><strong>Right to Restriction:</strong> Request we stop processing your data (but retain it).</li>
+        <li><strong>Right to Data Portability:</strong> Receive your data in a machine-readable format.</li>
+        <li><strong>Right to Object:</strong> Object to processing based on legitimate interests.</li>
+        <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time (does not affect prior processing).</li>
+    </ul>
+    <p><strong>How to Exercise Your Rights:</strong> Contact us at [Your Email Address]. We will respond within 30 days.</p>
+    <p><strong>Unsubscribe from Emails:</strong> Click the unsubscribe link in any newsletter email.</p>
+
+    <h2>9. Data Security</h2>
+    <p>We implement appropriate technical and organizational measures to protect your data:</p>
+    <ul>
+        <li><strong>HTTPS Encryption:</strong> All data transmitted to/from our site is encrypted via TLS.</li>
+        <li><strong>Rate Limiting:</strong> Prevents automated attacks on our signup form (max 3 submissions per hour per IP).</li>
+        <li><strong>Email Validation:</strong> Ensures only valid email addresses are stored.</li>
+        <li><strong>Cloudflare Security:</strong> DDoS protection, WAF, and secure data storage.</li>
+        <li><strong>No Payment Data:</strong> We do not collect or store payment information.</li>
     </ul>
 
-    <h2>5. Your Rights</h2>
-    <p>Under UK GDPR protocols, you have the right to:</p>
-    <ul>
-        <li><strong>Discharge:</strong> Unsubscribe at any time via the link in our emails.</li>
-        <li><strong>Erasure:</strong> Request total deletion of your data records.</li>
-    </ul>
+    <h2>10. Automated Decision Making</h2>
+    <p>We do not use automated decision-making or profiling that produces legal effects or significantly affects you.</p>
+    <p>The only automated processing is rate limiting (to prevent spam), which does not constitute automated decision-making under GDPR.</p>
+
+    <h2>11. Children's Privacy</h2>
+    <p>Our website is not directed at children under 13. We do not knowingly collect data from children. If you believe we have collected data from a child, please contact us immediately for deletion.</p>
+
+    <h2>12. Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. The "Last Updated" date at the top indicates when changes were made. Continued use of our website after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>13. Your Right to Complain</h2>
+    <p>If you believe we have not handled your data correctly, you have the right to lodge a complaint with the UK supervisory authority:</p>
+    <p><strong>Information Commissioner's Office (ICO)</strong><br>
+    Website: <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">https://ico.org.uk/make-a-complaint/</a><br>
+    Phone: 0303 123 1113<br>
+    Post: Information Commissioner's Office, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</p>
+
+    <h2>14. Contact Us</h2>
+    <p>For any questions about this privacy policy or how we handle your data, please contact:</p>
+    <p><strong>Email:</strong> [Your Email Address]<br>
+    <strong>Subject Line:</strong> "Data Protection Query - Field of Command"</p>
+    <p>We aim to respond to all queries within 30 days.</p>
 </body>
 </html>
