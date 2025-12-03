@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 
     <!-- Security -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://www.fieldofcommand.com https://www.transparenttextures.com https://www.google-analytics.com data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://www.fieldofcommand.com https://www.google-analytics.com data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://unpkg.com; base-uri 'self'; form-action 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Open Graph -->
@@ -70,9 +70,6 @@
                         header: ['Bebas Neue', 'sans-serif'],
                         mono: ['Courier Prime', 'monospace'],
                     },
-                    backgroundImage: {
-                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
-                    },
                     boxShadow: {
                         'photo': '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                         'inner-file': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
@@ -102,7 +99,7 @@
         .timeline-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
         .timeline-scroll::-webkit-scrollbar-thumb { background: #b91c1c; border-radius: 0; }
         .blend-multiply { mix-blend-mode: multiply; }
-        .stamp-box { mask-image: url('https://www.transparenttextures.com/patterns/dust.png'); -webkit-mask-image: url('https://www.transparenttextures.com/patterns/dust.png'); }
+        .stamp-box { opacity: 0.8; }
         .paper-clip { position: absolute; top: -15px; right: 45%; width: 40px; height: 15px; background: #888; border-radius: 10px; transform: rotate(-2deg); box-shadow: 1px 1px 2px rgba(0,0,0,0.3); z-index: 50; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -554,8 +551,6 @@
 
         <!-- THE PAPER DOCUMENT -->
         <main id="dossier" class="w-full max-w-5xl bg-paper-cream min-h-screen shadow-2xl relative border-x-2 border-ink-black/10 mt-4 overflow-hidden">
-            <div class="absolute inset-0 bg-paper-texture opacity-60 pointer-events-none blend-multiply z-20"></div>
-
             <!-- Coffee Stains -->
             <div class="coffee-stain coffee-stain-1"></div>
             <div class="coffee-stain coffee-stain-2"></div>
@@ -944,7 +939,6 @@
                                 <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 8TH ARMY OOB</div>
                             </div>
                         </div>
-                        <div class="absolute inset-0 bg-paper-texture opacity-10 pointer-events-none"></div>
                     </div>
                 </div>
 
@@ -1005,8 +999,6 @@
 
             <!-- FUTURE OPERATIONS (ROADMAP) -->
             <section id="future" class="p-8 md:p-16 border-b-4 border-tactical-red/50 relative reveal bg-ink-black text-paper-cream">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-                
                 <div class="flex flex-col md:flex-row gap-12 relative z-10">
                     <div class="flex-1">
                         <h2 class="font-header text-4xl md:text-5xl mb-6 text-white flex items-center gap-3">
