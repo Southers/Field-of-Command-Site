@@ -1214,13 +1214,29 @@
     </div>
 
     <!-- GDPR COOKIE BANNER -->
-    <div id="cookie-banner" class="fixed bottom-0 w-full bg-ink-black text-paper-cream p-4 z-50 transform translate-y-full transition-transform duration-500 flex flex-col md:flex-row items-center justify-between border-t-4 border-tactical-red shadow-2xl">
-        <div class="mb-4 md:mb-0 text-xs font-mono max-w-2xl">
-            <strong class="text-tactical-red">/// ALERT:</strong> THIS TERMINAL USES COOKIES TO ENHANCE OPERATIONAL ANALYTICS.
-        </div>
-        <div class="flex gap-4">
-            <button onclick="acceptCookies()" class="bg-tactical-red text-white px-6 py-2 font-header uppercase hover:bg-red-700 text-sm">CONFIRM</button>
-            <button onclick="hideCookies()" class="text-xs underline hover:text-white opacity-60">DISMISS</button>
+    <div id="cookie-banner" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-paper-cream border-4 border-tactical-red shadow-2xl max-w-2xl w-full p-8 relative transform scale-95 opacity-0 transition-all duration-300" id="cookie-modal">
+            <div class="absolute top-4 right-4 text-tactical-red text-xs font-bold border border-tactical-red px-2 py-1 transform rotate-3">URGENT</div>
+
+            <h3 class="font-header text-3xl mb-4 text-ink-black">COOKIE NOTICE</h3>
+
+            <div class="text-sm leading-relaxed mb-6 text-ink-black">
+                <p class="mb-3">
+                    <strong class="text-tactical-red">/// OPERATIONAL NOTICE:</strong> This site uses cookies to track analytics and improve your experience.
+                </p>
+                <p class="text-xs opacity-70">
+                    We use Google Analytics to understand how visitors interact with our site. You can accept cookies to help us improve, or decline if you prefer. See our <a href="privacy.html" class="underline hover:text-tactical-red">Privacy Policy</a> for details.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button onclick="acceptCookies()" class="flex-1 bg-tactical-red text-white px-6 py-3 font-header uppercase hover:bg-red-700 text-sm transition-colors border-2 border-ink-black shadow-md">
+                    ACCEPT COOKIES
+                </button>
+                <button onclick="rejectCookies()" class="flex-1 bg-white text-ink-black px-6 py-3 font-header uppercase hover:bg-neutral-100 text-sm transition-colors border-2 border-ink-black shadow-md">
+                    DECLINE
+                </button>
+            </div>
         </div>
     </div>
 
