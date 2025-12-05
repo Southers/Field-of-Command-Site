@@ -123,29 +123,93 @@ document.addEventListener('keydown', (e) => {
 });
 
 // COOKIES - GDPR Compliant Cookie Consent Management
-setTimeout(() => {
+// Check consent status immediately on page load
+(function checkCookieConsent() {
     console.log('Checking cookie consent status...');
-    if(!localStorage.getItem('cookiesAccepted')) {
-        console.log('No consent found - showing banner');
-        document.getElementById('cookie-banner').classList.remove('translate-y-full');
-    } else {
+    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    const cookiesRejected = localStorage.getItem('cookiesRejected');
+
+    if (cookiesAccepted === 'true') {
         console.log('Consent already given - loading analytics');
-        // If cookies are already accepted, load analytics
         loadAnalytics();
+    } else if (cookiesRejected === 'true') {
+        console.log('User previously declined cookies - not showing banner');
+        // Don't show banner, don't load analytics
+    } else {
+        console.log('No consent decision found - showing banner');
+        showCookieBanner();
     }
-}, 1000);
+})();
+
+function showCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+
+    // Show banner (overlay)
+    banner.classList.remove('hidden');
+
+    // Animate modal in after a brief delay
+    setTimeout(() => {
+        modal.classList.remove('scale-95', 'opacity-0');
+        modal.classList.add('scale-100', 'opacity-100');
+    }, 50);
+}
+
+function hideCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+
+    // Animate modal out
+    modal.classList.remove('scale-100', 'opacity-100');
+    modal.classList.add('scale-95', 'opacity-0');
+
+    // Hide banner after animation
+    setTimeout(() => {
+        banner.classList.add('hidden');
+    }, 300);
+}
 
 function acceptCookies() {
     console.log('User accepted cookies');
     localStorage.setItem('cookiesAccepted', 'true');
     localStorage.setItem('cookiesAcceptedDate', new Date().toISOString());
-    hideCookies();
+    localStorage.removeItem('cookiesRejected'); // Clear any previous rejection
+
+    hideCookieBanner();
     loadAnalytics();
+
+    // Track acceptance event (if GA loads successfully)
+    setTimeout(() => {
+        if (window.gtag) {
+            gtag('event', 'cookie_consent_accept', {
+                'event_category': 'consent',
+                'event_label': 'user_accepted_cookies'
+            });
+        }
+    }, 1000);
 }
 
-function hideCookies() {
-    console.log('Hiding cookie banner');
-    document.getElementById('cookie-banner').classList.add('translate-y-full');
+function rejectCookies() {
+    console.log('User rejected cookies');
+    localStorage.setItem('cookiesRejected', 'true');
+    localStorage.setItem('cookiesRejectedDate', new Date().toISOString());
+    localStorage.removeItem('cookiesAccepted'); // Clear any previous acceptance
+
+    hideCookieBanner();
+
+    // Track rejection to our own endpoint (no GA tracking)
+    fetch('/api/track-rejection', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            action: 'cookie_rejected',
+            timestamp: new Date().toISOString()
+        })
+    }).then(() => {
+        console.log('Cookie rejection tracked successfully');
+    }).catch((error) => {
+        console.log('Cookie rejection tracking failed (non-critical):', error);
+    });
 }
 
 // Analytics loader - only loads when consent is given
