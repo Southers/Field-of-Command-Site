@@ -519,7 +519,7 @@
                     <span class="file-tab-text">LOGISTICS</span>
                 </a>
                 <a href="#devlog" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">INTELLIGENCE</span>
+                    <span class="file-tab-text">COMMS</span>
                 </a>
             </div>
 
@@ -544,7 +544,7 @@
                     <span class="relative z-10">LOGISTICS</span>
                 </a>
                 <a href="#devlog" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">INTEL</span>
+                    <span class="relative z-10">COMMS</span>
                 </a>
             </div>
         </nav>
@@ -603,8 +603,128 @@
                 </div>
             </div>
 
+            <!-- MECHANICS: THE ART OF COMMAND -->
+            <section id="logistics" class="border-b-4 border-ink-black/30 reveal bg-paper-cream">
+                <div class="classified-stamp" style="top: 30px; right: 30px; opacity: 0.12;">TOP SECRET</div>
+                <div class="classified-watermark" style="opacity: 0.015;">OPERATIONAL</div>
+                <!-- ROW 1 -->
+                <div class="grid md:grid-cols-2 border-b-2 border-ink-black/10">
+                    <!-- 1. OPERATIONAL INTENT -->
+                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative">
+                        <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">COMMAND, DO NOT MICROMANAGE</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            A General commands the Army, not the rifle. Issue orders based on intent. Define the objective, allocate the resources, and trust your officers to execute.
+                        </p>
+                        <!-- Attached Photo: MAP -->
+                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%;"></div>
+                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
+                                <img src="https://www.fieldofcommand.com/images/tactical.webp" alt="Operational Map" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG A: OPERATIONAL PLANNING</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 2. HIERARCHY -->
+                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
+                        <i data-lucide="users" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
+                        <h2 class="font-header text-4xl mb-4 relative z-10">CHAIN OF COMMAND</h2>
+                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
+                            Orders flow down; intelligence flows up. As your subordinates survive, they develop traits and skills, offering new tactical solutions to operational problems.
+                        </p>
+                        <!-- Attached Photo: HIERARCHY -->
+                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://www.fieldofcommand.com/images/structure.webp" alt="Hierarchy Tree" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 8TH ARMY OOB</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="grid md:grid-cols-2">
+                    <!-- 3. LOGISTICS -->
+                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 bg-paper-dark/20 relative">
+                        <i data-lucide="truck" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">LOGISTICS DEFINES VICTORY</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            Amateurs talk tactics. Professionals talk logistics. Secure your depots and protect your supply lines. A tank division without fuel is nothing but a target.
+                        </p>
+                        <!-- Attached Photo: LOGISTICS -->
+                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%;"></div>
+                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
+                                <img src="https://www.fieldofcommand.com/images/logistics.webp" alt="Supply Truck" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
+                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG C: SUPPLY LINES</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. PERSISTENCE -->
+                    <div class="p-8 md:p-16 relative">
+                        <i data-lucide="shield" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">ACTIONS HAVE CONSEQUENCES</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            Your decisions echo through history. Your units endure from Dunkirk to Berlin. Lose a veteran battalion in '41? They are gone forever.
+                        </p>
+                        <!-- Attached Photo: PERSISTENCE -->
+                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://www.fieldofcommand.com/images/persistance.webp" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: BATTLE HONOURS</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. REALITY -->
+                    <div class="p-8 md:p-16 relative">
+                        <i data-lucide="medal" class="w-10 h-10 text-tactical-red mb-6"></i>
+                        <h2 class="font-header text-4xl mb-4">THE FOG OF WAR</h2>
+                        <p class="text-sm leading-relaxed mb-6">
+                            No plan survives contact. Reports are delayed. Intelligence is flawed. Orders are lost in the chaos. Experience the friction of real command.
+                        </p>
+                        <!-- Attached Photo: REALITY -->
+                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://www.fieldofcommand.com/images/field.webp" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG E: CONTACT!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. HISTORICAL AUTHENTICITY -->
+                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
+                        <i data-lucide="book-open" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
+                        <h2 class="font-header text-4xl mb-4 relative z-10">HISTORICAL AUTHENTICITY</h2>
+                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
+                            History is not just a backdrop; it is the rulebook. Terrain generated from satellite telemetry and aerial recon. Orders of Battle sourced from official records. Command the actual regiments—from the Desert Rats to the 4th Indian. Authentic commanders, real scenarios, true to life authenticity.
+                        </p>
+                        <!-- Attached Photo: ARCHIVES -->
+                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
+                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
+                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
+                                <img src="https://www.fieldofcommand.com/images/archives.webp" alt="Historical Archives" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
+                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG F: THE ARCHIVES</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FILE FOLDER DIVIDER -->
+            <div class="section-divider py-8 bg-gradient-to-r from-transparent via-paper-dark to-transparent">
+                <div class="file-tab-divider">
+                    <span class="tab-label">/// SECTION BRAVO ///</span>
+                </div>
+            </div>
+
             <!-- CAMPAIGN TIMELINE: EVOLUTION OF WARFARE -->
-            <section id="campaign" class="p-8 md:p-16 border-b-4 border-ink-black/30 bg-gradient-to-b from-paper-dark/40 to-paper-cream reveal">
+            <section id="campaign" class="p-8 md:p-16 border-b-4 border-ink-black/30 bg-gradient-to-b from-paper-dark/50 to-paper-dark/30 reveal">
                 <div class="classified-stamp" style="top: 40px; right: 40px; opacity: 0.1;">SECRET</div>
                 <div class="classified-watermark">RESTRICTED</div>
                 <div class="flex flex-col md:flex-row justify-between items-end mb-8">
@@ -946,126 +1066,6 @@
                 </div>
             </section>
 
-            <!-- FILE FOLDER DIVIDER -->
-            <div class="section-divider py-8 bg-gradient-to-r from-transparent via-paper-dark to-transparent">
-                <div class="file-tab-divider">
-                    <span class="tab-label">/// SECTION BRAVO ///</span>
-                </div>
-            </div>
-
-            <!-- MECHANICS: THE ART OF COMMAND -->
-            <section id="logistics" class="border-b-4 border-ink-black/30 reveal bg-paper-cream">
-                <div class="classified-stamp" style="top: 30px; right: 30px; opacity: 0.12;">TOP SECRET</div>
-                <div class="classified-watermark" style="opacity: 0.015;">OPERATIONAL</div>
-                <!-- ROW 1 -->
-                <div class="grid md:grid-cols-2 border-b-2 border-ink-black/10">
-                    <!-- 1. OPERATIONAL INTENT -->
-                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative">
-                        <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">COMMAND, DO NOT MICROMANAGE</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            A General commands the Army, not the rifle. Issue orders based on intent. Define the objective, allocate the resources, and trust your officers to execute.
-                        </p>
-                        <!-- Attached Photo: MAP -->
-                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%;"></div>
-                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/tactical.webp" alt="Operational Map" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG A: OPERATIONAL PLANNING</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2. HIERARCHY -->
-                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
-                        <i data-lucide="users" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                        <h2 class="font-header text-4xl mb-4 relative z-10">CHAIN OF COMMAND</h2>
-                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                            Orders flow down; intelligence flows up. As your subordinates survive, they develop traits and skills, offering new tactical solutions to operational problems.
-                        </p>
-                        <!-- Attached Photo: HIERARCHY -->
-                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/structure.webp" alt="Hierarchy Tree" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG B: 8TH ARMY OOB</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 2 -->
-                <div class="grid md:grid-cols-2">
-                    <!-- 3. LOGISTICS -->
-                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 bg-paper-dark/20 relative">
-                        <i data-lucide="truck" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">LOGISTICS DEFINES VICTORY</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            Amateurs talk tactics. Professionals talk logistics. Secure your depots and protect your supply lines. A tank division without fuel is nothing but a target.
-                        </p>
-                        <!-- Attached Photo: LOGISTICS -->
-                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%;"></div>
-                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/logistics.webp" alt="Supply Truck" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG C: SUPPLY LINES</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 4. PERSISTENCE -->
-                    <div class="p-8 md:p-16 relative">
-                        <i data-lucide="shield" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">ACTIONS HAVE CONSEQUENCES</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            Your decisions echo through history. Your units endure from Dunkirk to Berlin. Lose a veteran battalion in '41? They are gone forever.
-                        </p>
-                        <!-- Attached Photo: PERSISTENCE -->
-                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/persistance.webp" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: BATTLE HONOURS</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 5. REALITY -->
-                    <div class="p-8 md:p-16 relative">
-                        <i data-lucide="medal" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">THE FOG OF WAR</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            No plan survives contact. Reports are delayed. Intelligence is flawed. Orders are lost in the chaos. Experience the friction of real command.
-                        </p>
-                        <!-- Attached Photo: REALITY -->
-                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/field.webp" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG E: CONTACT!</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 6. HISTORICAL AUTHENTICITY -->
-                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
-                        <i data-lucide="book-open" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                        <h2 class="font-header text-4xl mb-4 relative z-10">HISTORICAL AUTHENTICITY</h2>
-                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                            History is not just a backdrop; it is the rulebook. Terrain generated from satellite telemetry and aerial recon. Orders of Battle sourced from official records. Command the actual regiments—from the Desert Rats to the 4th Indian. Authentic commanders, real scenarios, true to life authenticity.
-                        </p>
-                        <!-- Attached Photo: ARCHIVES -->
-                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/archives.webp" alt="Historical Archives" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG F: THE ARCHIVES</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- FUTURE OPERATIONS (ROADMAP) -->
             <section id="future" class="p-8 md:p-16 border-b-4 border-tactical-red/50 relative reveal bg-ink-black text-paper-cream">
                 <div class="flex flex-col md:flex-row gap-12 relative z-10">
@@ -1128,9 +1128,8 @@
             </div>
 
             <!-- DEVLOGS -->
-            <section id="devlog" class="p-8 md:p-16 border-b-4 border-ink-black/30 relative reveal bg-paper-dark/20">
-                <div class="classified-stamp" style="top: 25px; right: 25px; opacity: 0.1;">FOR OFFICIAL USE ONLY</div>
-                <div class="classified-watermark" style="opacity: 0.018;">INTELLIGENCE</div>
+            <section id="devlog" class="p-8 md:p-16 border-b-4 border-ink-black/30 relative reveal bg-paper-dark/50">
+                <div class="classified-watermark" style="opacity: 0.018;">COMMS</div>
                 <h2 class="font-header text-4xl md:text-5xl mb-12 flex items-center gap-4">
                     <i data-lucide="file-text" class="w-8 h-8 text-tactical-red"></i> FIELD REPORTS
                 </h2>
@@ -1150,6 +1149,30 @@
                         <p class="text-sm mb-4 leading-relaxed">Field of Command addresses a critical gap in tactical simulations. Our analysis suggests...</p>
                         <span class="text-xs font-bold uppercase underline hover:text-tactical-red">READ DISPATCH &rarr;</span>
                     </article>
+                </div>
+            </section>
+
+            <!-- RELEASE DATE -->
+            <section class="p-8 md:p-16 border-b-4 border-ink-black/30 relative reveal bg-paper-dark/40">
+                <div class="classified-watermark" style="opacity: 0.018;">TIMELINE</div>
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="font-header text-4xl md:text-5xl mb-8 text-ink-black">DEPLOYMENT SCHEDULE</h2>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white border-2 border-ink-black p-8 shadow-md">
+                            <div class="text-xs font-bold uppercase tracking-widest text-tactical-red mb-3">Phase One</div>
+                            <h3 class="font-header text-3xl mb-4 text-ink-black">REVEAL</h3>
+                            <p class="font-mono text-lg font-bold text-ink-black">Q2 2026</p>
+                            <p class="text-xs text-neutral-600 mt-3">Full gameplay reveal and expanded access</p>
+                        </div>
+
+                        <div class="bg-paper-dark border-2 border-ink-black p-8 shadow-md text-paper-cream">
+                            <div class="text-xs font-bold uppercase tracking-widest text-tactical-red mb-3">Phase Two</div>
+                            <h3 class="font-header text-3xl mb-4">DEPLOYMENT</h3>
+                            <p class="font-mono text-lg font-bold">Q4 2026</p>
+                            <p class="text-xs text-paper-cream/80 mt-3">Steam Early Access Launch</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
