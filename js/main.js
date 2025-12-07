@@ -460,3 +460,60 @@ if (carouselContainer && carouselPrev && carouselNext) {
     // Re-initialize Lucide icons for carousel arrows
     lucide.createIcons();
 }
+
+// DEPLOYMENT SCHEDULE CARD ALTERNATION
+const revealCard = document.getElementById('reveal-card');
+const deploymentCard = document.getElementById('deployment-card');
+
+if (revealCard && deploymentCard) {
+    let colorsFlipped = false;
+
+    function toggleCardColors() {
+        colorsFlipped = !colorsFlipped;
+
+        if (colorsFlipped) {
+            // Reveal card becomes dark
+            revealCard.classList.remove('bg-white', 'text-ink-black');
+            revealCard.classList.add('bg-paper-dark', 'text-paper-cream');
+            revealCard.querySelector('.reveal-text').classList.remove('text-ink-black');
+            revealCard.querySelector('.reveal-text').classList.add('text-paper-cream');
+            revealCard.querySelector('.reveal-date').classList.remove('text-ink-black');
+            revealCard.querySelector('.reveal-date').classList.add('text-paper-cream');
+            revealCard.querySelector('.reveal-desc').classList.remove('text-neutral-600');
+            revealCard.querySelector('.reveal-desc').classList.add('text-paper-cream/80');
+
+            // Deployment card becomes light
+            deploymentCard.classList.remove('bg-paper-dark', 'text-paper-cream');
+            deploymentCard.classList.add('bg-white', 'text-ink-black');
+            deploymentCard.querySelector('.deployment-text').classList.remove('text-paper-cream');
+            deploymentCard.querySelector('.deployment-text').classList.add('text-ink-black');
+            deploymentCard.querySelector('.deployment-date').classList.remove('text-paper-cream');
+            deploymentCard.querySelector('.deployment-date').classList.add('text-ink-black');
+            deploymentCard.querySelector('.deployment-desc').classList.remove('text-paper-cream/80');
+            deploymentCard.querySelector('.deployment-desc').classList.add('text-neutral-600');
+        } else {
+            // Reset to original colors
+            revealCard.classList.remove('bg-paper-dark', 'text-paper-cream');
+            revealCard.classList.add('bg-white', 'text-ink-black');
+            revealCard.querySelector('.reveal-text').classList.remove('text-paper-cream');
+            revealCard.querySelector('.reveal-text').classList.add('text-ink-black');
+            revealCard.querySelector('.reveal-date').classList.remove('text-paper-cream');
+            revealCard.querySelector('.reveal-date').classList.add('text-ink-black');
+            revealCard.querySelector('.reveal-desc').classList.remove('text-paper-cream/80');
+            revealCard.querySelector('.reveal-desc').classList.add('text-neutral-600');
+
+            deploymentCard.classList.remove('bg-white', 'text-ink-black');
+            deploymentCard.classList.add('bg-paper-dark', 'text-paper-cream');
+            deploymentCard.querySelector('.deployment-text').classList.remove('text-ink-black');
+            deploymentCard.querySelector('.deployment-text').classList.add('text-paper-cream');
+            deploymentCard.querySelector('.deployment-date').classList.remove('text-ink-black');
+            deploymentCard.querySelector('.deployment-date').classList.add('text-paper-cream');
+            deploymentCard.querySelector('.deployment-desc').classList.remove('text-neutral-600');
+            deploymentCard.querySelector('.deployment-desc').classList.add('text-paper-cream/80');
+        }
+    }
+
+    // Add click listeners to both cards
+    revealCard.addEventListener('click', toggleCardColors);
+    deploymentCard.addEventListener('click', toggleCardColors);
+}

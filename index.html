@@ -512,14 +512,14 @@
                 <a href="#briefing" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
                     <span class="file-tab-text">BRIEFING</span>
                 </a>
-                <a href="#campaign" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">THEATRES</span>
-                </a>
                 <a href="#logistics" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">LOGISTICS</span>
+                    <span class="file-tab-text">DOCTRINE</span>
+                </a>
+                <a href="#campaign" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
+                    <span class="file-tab-text">CAMPAIGNS</span>
                 </a>
                 <a href="#devlog" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">COMMS</span>
+                    <span class="file-tab-text">DISPATCH</span>
                 </a>
             </div>
 
@@ -537,14 +537,14 @@
                 <a href="#briefing" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
                     <span class="relative z-10">BRIEFING</span>
                 </a>
-                <a href="#campaign" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">THEATRES</span>
-                </a>
                 <a href="#logistics" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">LOGISTICS</span>
+                    <span class="relative z-10">DOCTRINE</span>
+                </a>
+                <a href="#campaign" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
+                    <span class="relative z-10">CAMPAIGNS</span>
                 </a>
                 <a href="#devlog" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">COMMS</span>
+                    <span class="relative z-10">DISPATCH</span>
                 </a>
             </div>
         </nav>
@@ -560,7 +560,6 @@
 
             <!-- HERO SECTION: THE VISION -->
             <section id="briefing" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative">
-                <div class="classified-stamp" style="top: 30px; right: 30px;">CLASSIFIED</div>
                 <div class="classified-watermark">CONFIDENTIAL</div>
                 <div class="flex flex-col md:flex-row gap-12">
                     <div class="flex-1 z-30 animate-fade-up">
@@ -1159,18 +1158,18 @@
                     <h2 class="font-header text-4xl md:text-5xl mb-8 text-ink-black">DEPLOYMENT SCHEDULE</h2>
 
                     <div class="grid md:grid-cols-2 gap-8">
-                        <div class="bg-white border-2 border-ink-black p-8 shadow-md">
+                        <div id="reveal-card" class="deployment-card bg-white border-2 border-ink-black p-8 shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105 transform duration-300">
                             <div class="text-xs font-bold uppercase tracking-widest text-tactical-red mb-3">Phase One</div>
-                            <h3 class="font-header text-3xl mb-4 text-ink-black">REVEAL</h3>
-                            <p class="font-mono text-lg font-bold text-ink-black">Q2 2026</p>
-                            <p class="text-xs text-neutral-600 mt-3">Full gameplay reveal and expanded access</p>
+                            <h3 class="font-header text-3xl mb-4 text-ink-black reveal-text">REVEAL</h3>
+                            <p class="font-mono text-lg font-bold text-ink-black reveal-date">Q2 2026</p>
+                            <p class="text-xs text-neutral-600 mt-3 reveal-desc">Full gameplay reveal and expanded access</p>
                         </div>
 
-                        <div class="bg-paper-dark border-2 border-ink-black p-8 shadow-md text-paper-cream">
+                        <div id="deployment-card" class="deployment-card bg-paper-dark border-2 border-ink-black p-8 shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105 transform duration-300 text-paper-cream">
                             <div class="text-xs font-bold uppercase tracking-widest text-tactical-red mb-3">Phase Two</div>
-                            <h3 class="font-header text-3xl mb-4">DEPLOYMENT</h3>
-                            <p class="font-mono text-lg font-bold">Q4 2026</p>
-                            <p class="text-xs text-paper-cream/80 mt-3">Steam Early Access Launch</p>
+                            <h3 class="font-header text-3xl mb-4 deployment-text">DEPLOYMENT</h3>
+                            <p class="font-mono text-lg font-bold deployment-date">Q4 2026</p>
+                            <p class="text-xs text-paper-cream/80 mt-3 deployment-desc">Steam Early Access Launch</p>
                         </div>
                     </div>
                 </div>
