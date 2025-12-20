@@ -1,3 +1,37 @@
+// MILITARY DATE FORMAT
+// Display current date in military format (DD MMM YYYY)
+(function setMilitaryDate() {
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const militaryDate = `${day} ${month} ${year}`;
+
+    const dateElement = document.getElementById('current-date');
+    if (dateElement) {
+        dateElement.textContent = militaryDate;
+    }
+})();
+
+// STAMP EFFECT ON BUTTONS
+// Add red stamp effect when buttons are clicked
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Add stamped class
+            this.classList.add('stamped');
+
+            // Remove stamped class after animation completes
+            setTimeout(() => {
+                this.classList.remove('stamped');
+            }, 500);
+        });
+    });
+});
+
 // COOKIES - GDPR Compliant Cookie Consent Management
 // Check consent status immediately on page load
 (function checkCookieConsent() {
@@ -207,8 +241,10 @@ if (form && statusMsg && submitBtn) {
             const data = await response.json();
 
             if (response.ok) {
-                statusMsg.textContent = "Transmission received. You're on the list.";
-                statusMsg.style.color = '#ff6b35';
+                statusMsg.textContent = "/// TRANSMISSION RECEIVED ///";
+                statusMsg.style.color = '#8b0000';
+                statusMsg.style.fontFamily = "'Courier Prime', monospace";
+                statusMsg.style.letterSpacing = '0.1em';
                 form.reset();
 
                 // Track successful newsletter signup
@@ -219,20 +255,24 @@ if (form && statusMsg && submitBtn) {
                 });
             } else {
                 // Handle specific error cases
-                let errorMessage = "Failed. Please try again.";
+                let errorMessage = "/// TRANSMISSION FAILED ///";
                 if (response.status === 429) {
-                    errorMessage = "Too many requests. Try again later.";
+                    errorMessage = "/// TOO MANY REQUESTS ///";
                 } else if (response.status === 409) {
-                    errorMessage = "Email already registered.";
+                    errorMessage = "/// ALREADY REGISTERED ///";
                 } else if (data.error) {
-                    errorMessage = data.error;
+                    errorMessage = `/// ${data.error.toUpperCase()} ///`;
                 }
                 statusMsg.textContent = errorMessage;
-                statusMsg.style.color = '#e8e8e8';
+                statusMsg.style.color = '#1a1a1a';
+                statusMsg.style.fontFamily = "'Courier Prime', monospace";
+                statusMsg.style.letterSpacing = '0.1em';
             }
         } catch (error) {
-            statusMsg.textContent = "Connection failed. Please try again.";
-            statusMsg.style.color = '#e8e8e8';
+            statusMsg.textContent = "/// CONNECTION FAILED ///";
+            statusMsg.style.color = '#1a1a1a';
+            statusMsg.style.fontFamily = "'Courier Prime', monospace";
+            statusMsg.style.letterSpacing = '0.1em';
         } finally {
             submitBtn.innerHTML = "TRANSMIT";
             submitBtn.disabled = false;
