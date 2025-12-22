@@ -1,57 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Field of Command | Operational WWII Strategy</title>
-    <meta name="description" content="Command WWII's Western Front in the first true Operational RTS. Battalion to Corps Commander. 1940-1945. Persistent units, AI deputies, logistics warfare. The theatre, not the soldier.">
-    <meta name="keywords" content="WWII RTS, Strategy Game, Field of Command, Steam Game, Wargame, Operational Level, UE5">
+    <meta name="description" content="An operational-scale WWII RTS built on intent, not reflexes. Command through your officers, not micromanagement.">
     <link rel="canonical" href="https://www.fieldofcommand.com/">
     <link rel="icon" type="image/png" href="images/favicon.png">
 
     <!-- Security -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://www.fieldofcommand.com https://www.google-analytics.com data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://unpkg.com; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' https://www.fieldofcommand.com https://www.google-analytics.com data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com; base-uri 'self'; form-action 'self';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.fieldofcommand.com/">
     <meta property="og:title" content="Field of Command - Operational WWII RTS">
-    <meta property="og:description" content="Command the theatre, not the soldier. A persistent operational strategy game powered by Unreal Engine 5.">
+    <meta property="og:description" content="An operational-scale WWII RTS built on intent, not reflexes. Command through officers, not micromanagement.">
     <meta property="og:image" content="https://www.fieldofcommand.com/images/command.webp">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://www.fieldofcommand.com/images/command.webp">
     <meta name="twitter:title" content="Field of Command - Operational WWII RTS">
-    <meta name="twitter:description" content="Command the theatre, not the soldier. A persistent operational strategy game powered by Unreal Engine 5.">
+    <meta name="twitter:description" content="An operational-scale WWII RTS built on intent, not reflexes. Command through officers, not micromanagement.">
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "Field of Command",
-      "genre": ["Strategy", "RTS", "Wargame"],
-      "gamePlatform": "PC",
-      "applicationCategory": "Game",
-      "operatingSystem": "Windows",
-      "description": "An operational theatre-scale, real-time WWII strategy game where players command hierarchy and logistics.",
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/PreOrder",
-        "price": "0.00",
-        "priceCurrency": "GBP"
-      }
-    }
-    </script>
-    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Font Awesome for brand icons only (Steam, Discord, etc.) -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for brand icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS -->
@@ -61,1251 +38,408 @@
             theme: {
                 extend: {
                     colors: {
-                        'ink-black': '#1a1a1a',
-                        'paper-cream': '#e8e4d9', 
-                        'paper-dark': '#d6d2c4',
-                        'tactical-red': '#b91c1c',
+                        'foc-bg': '#0e0e0e',
+                        'foc-text': '#e8e8e8',
+                        'foc-red': '#8b0000',
                     },
                     fontFamily: {
-                        header: ['Bebas Neue', 'sans-serif'],
-                        mono: ['Courier Prime', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Courier Prime', 'Courier New', 'monospace'],
                     },
-                    boxShadow: {
-                        'photo': '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                        'inner-file': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-                    },
-                    animation: {
-                        'stamp': 'stamp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-                        'fade-up': 'fadeUp 0.8s ease-out forwards',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        stamp: {
-                            '0%': { opacity: '0', transform: 'scale(1.5) rotate(-12deg)' },
-                            '100%': { opacity: '0.8', transform: 'scale(1) rotate(-12deg)' },
-                        },
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
                 }
             }
         }
     </script>
 
     <style>
-        .timeline-scroll::-webkit-scrollbar { width: 6px; }
-        .timeline-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
-        .timeline-scroll::-webkit-scrollbar-thumb { background: #b91c1c; border-radius: 0; }
-        .blend-multiply { mix-blend-mode: multiply; }
-        .stamp-box { opacity: 0.8; }
-        .paper-clip { position: absolute; top: -15px; right: 45%; width: 40px; height: 15px; background: #888; border-radius: 10px; transform: rotate(-2deg); box-shadow: 1px 1px 2px rgba(0,0,0,0.3); z-index: 50; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* Section entrance animations */
-        .reveal.active h2:first-of-type { animation: slideInLeft 0.8s ease-out 0.2s forwards; opacity: 0; }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-
-        /* Section divider animations */
-        .section-divider { opacity: 0.6; transition: opacity 0.4s ease; }
-        .section-divider:hover { opacity: 1; }
-
-        /* Enhance deployment schedule styling */
-        .deployment-card h3 { position: relative; }
-        .deployment-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #b91c1c;
-            transition: width 0.4s ease;
-        }
-        .deployment-card:hover h3::after { width: 40px; }
-        #lightbox { transition: opacity 0.3s ease; }
-        #lightbox.hidden { pointer-events: none; opacity: 0; }
-
-        /* Intelligence File Folder Navigation */
-        .file-tab {
-            position: relative;
-            background: linear-gradient(to bottom, #d6d2c4 0%, #e8e4d9 100%);
-            clip-path: polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-top: 2px solid #c4b5a0;
-            border-left: 1px solid rgba(0,0,0,0.1);
-            border-right: 1px solid rgba(0,0,0,0.1);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 4px rgba(0,0,0,0.1);
+        body {
+            background-color: #0e0e0e;
+            color: #e8e8e8;
+            font-family: 'Inter', system-ui, sans-serif;
         }
 
-        .file-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 8%;
-            right: 8%;
-            height: 3px;
-            background: #b91c1c;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.05em;
+            font-family: 'Courier Prime', monospace;
         }
 
-        .file-tab::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 5px;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 8px 8px 0 0;
-            border-color: #a39580 transparent transparent transparent;
-            opacity: 0.4;
-        }
-
-        .file-tab:hover {
-            transform: translateY(-6px) rotate(0.5deg);
-            background: linear-gradient(to bottom, #e8e4d9 0%, #f5f1e6 100%);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .file-tab:hover::before {
-            opacity: 1;
-        }
-
-        .file-tab-text {
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-        }
-
-        /* Classified stamp effect on hover */
-        .file-tab:hover .file-tab-text::after {
-            content: '●';
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #b91c1c;
-            font-size: 6px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        /* Mobile file drawer animation */
-        @keyframes slideInFromRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        #mobile-menu:not(.hidden) {
-            animation: slideInFromRight 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        .mobile-file-item {
-            position: relative;
-            background: linear-gradient(135deg, #e8e4d9 0%, #d6d2c4 100%);
-            border-left: 4px solid #b91c1c;
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.3);
-            transition: all 0.2s ease;
-        }
-
-        .mobile-file-item::before {
-            content: '//';
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #b91c1c;
-            font-weight: bold;
-            font-size: 12px;
-            opacity: 0.5;
-        }
-
-        .mobile-file-item:hover {
-            background: #f5f1e6;
-            border-left-width: 6px;
-            transform: translateX(4px);
-            box-shadow: 4px 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .mobile-file-item:active {
-            transform: translateX(2px);
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* Classification Stamps */
-        .classified-stamp {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #b91c1c;
-            opacity: 0.15;
-            transform: rotate(-12deg);
-            border: 4px solid #b91c1c;
-            padding: 10px 20px;
-            pointer-events: none;
-            letter-spacing: 0.3em;
-            z-index: 5;
-        }
-
-        /* Paper Texture Overlay */
-        #dossier::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
-            opacity: 0.03;
-            pointer-events: none;
-            mix-blend-mode: multiply;
-            z-index: 1;
-        }
-
-        /* Ink Blot Bullets */
-        ul li::marker {
-            content: '●';
-            color: #b91c1c;
-            font-size: 1.2em;
-        }
-
-        /* Coffee Stain Effects */
-        .coffee-stain {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle,
-                rgba(139, 90, 43, 0.08) 0%,
-                rgba(139, 90, 43, 0.03) 50%,
-                transparent 70%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .coffee-stain-1 {
-            top: 15%;
-            right: 5%;
-            width: 150px;
-            height: 150px;
-        }
-
-        .coffee-stain-2 {
-            bottom: 25%;
-            left: 3%;
-            width: 100px;
-            height: 100px;
-            opacity: 0.6;
-        }
-
-        .coffee-stain-3 {
-            top: 60%;
-            right: 8%;
-            width: 80px;
-            height: 80px;
-            opacity: 0.4;
-        }
-
-        /* Vintage Photo Enhancement */
-        .vintage-photo {
-            position: relative;
-        }
-
-        .vintage-photo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 60%, rgba(0,0,0,0.1) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Redacted Text Effect */
-        .redacted {
-            position: relative;
-            background: linear-gradient(to bottom,
-                transparent 0%,
-                transparent 20%,
-                #1a1a1a 20%,
-                #1a1a1a 80%,
-                transparent 80%);
-            color: transparent;
-            user-select: none;
-            cursor: help;
-            transition: all 0.3s ease;
-        }
-
-        .redacted:hover {
-            background: transparent;
-            color: inherit;
-        }
-
-        /* Paper Curl on Hover */
-        section:hover {
-            box-shadow:
-                inset -2px -2px 4px rgba(0,0,0,0.05),
-                4px 4px 12px rgba(0,0,0,0.08);
-        }
-
-        /* File Folder Section Dividers */
-        .section-divider {
-            position: relative;
-            height: 50px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            z-index: 10;
-        }
-
-        .file-tab-divider {
-            position: relative;
-            height: 40px;
-            width: 300px;
-            background: linear-gradient(to right,
-                #d6d2c4 0%,
-                #e8e4d9 50%,
-                #d6d2c4 100%);
-            clip-path: polygon(
-                0 0,
-                15% 0,
-                18% 100%,
-                82% 100%,
-                85% 0,
-                100% 0,
-                100% 100%,
-                0 100%
-            );
-            border-top: 2px solid #c4b5a0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tab-label {
-            font-size: 0.7rem;
-            font-weight: bold;
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 700;
             letter-spacing: 0.2em;
-            color: #1a1a1a;
-            opacity: 0.6;
+            text-transform: uppercase;
+            font-family: 'Courier Prime', monospace;
         }
 
-        /* Typewriter Animation */
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
+        .hero-description {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            line-height: 1.6;
+            max-width: 42rem;
         }
 
-        @keyframes blink {
-            50% { border-color: transparent; }
+        .classification-mark {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            opacity: 0.4;
         }
 
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid #b91c1c;
-            white-space: nowrap;
-            animation: typewriter 2s steps(40) 0.5s forwards,
-                       blink 0.75s step-end infinite;
-            width: 0;
+        .btn {
             display: inline-block;
-        }
-
-        /* Classified Watermark */
-        .classified-watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 8rem;
-            font-weight: bold;
-            color: #b91c1c;
-            opacity: 0.02;
-            letter-spacing: 1rem;
-            pointer-events: none;
-            white-space: nowrap;
-            z-index: 1;
-            font-family: 'Bebas Neue', sans-serif;
-        }
-
-        /* Ink Stamp Effect on Button Click */
-        @keyframes stamp {
-            0% { transform: scale(0) rotate(-5deg); opacity: 0; }
-            50% { transform: scale(1.1) rotate(-5deg); opacity: 1; }
-            100% { transform: scale(1) rotate(-5deg); opacity: 1; }
-        }
-
-        .stamped {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: 'Courier Prime', monospace;
             position: relative;
         }
 
-        .stamped::after {
+        .btn-primary {
+            background-color: #8b0000;
+            color: #e8e8e8;
+            border-color: #8b0000;
+        }
+
+        .btn-primary:hover {
+            background-color: #a00000;
+            border-color: #a00000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #e8e8e8;
+            border-color: #e8e8e8;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e8e8e8;
+            color: #0e0e0e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 232, 232, 0.2);
+        }
+
+        /* Stamp effect on click */
+        .btn.stamped::after {
             content: 'CONFIRMED';
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-12deg);
-            font-size: 2rem;
-            color: #b91c1c;
-            opacity: 0.3;
-            font-weight: bold;
+            transform: translate(-50%, -50%) rotate(-8deg);
+            font-size: 1.5rem;
+            color: #8b0000;
+            opacity: 0;
+            font-weight: 700;
             letter-spacing: 0.2em;
-            animation: stamp 0.3s ease-out;
             pointer-events: none;
+            animation: stamp 0.5s ease-out forwards;
         }
 
-        /* Animated Map Pins */
-        @keyframes pin-drop {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-            60% { transform: translateY(5px) rotate(5deg); }
-            80% { transform: translateY(-3px) rotate(-2deg); }
-            100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        @keyframes stamp {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(-8deg) scale(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) rotate(-8deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) rotate(-8deg) scale(1);
+            }
         }
 
-        .map-pin {
-            animation: pin-drop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            animation-fill-mode: both;
+        .screenshot-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .map-pin:nth-child(1) { animation-delay: 0.2s; }
-        .map-pin:nth-child(2) { animation-delay: 0.4s; }
-        .map-pin:nth-child(3) { animation-delay: 0.6s; }
-        .map-pin:nth-child(4) { animation-delay: 0.8s; }
-        .map-pin:nth-child(5) { animation-delay: 1.0s; }
-        .map-pin:nth-child(6) { animation-delay: 1.2s; }
-
-        /* Vignette/Faded Edges */
-        #dossier {
-            box-shadow:
-                inset 0 0 100px rgba(0,0,0,0.02),
-                inset 0 0 20px rgba(0,0,0,0.03);
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* Document Page Number */
-        .page-number {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            color: rgba(26, 26, 26, 0.4);
+        input[type="email"] {
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            color: #e8e8e8;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 400px;
+            transition: all 0.2s ease;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #8b0000;
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
+        }
+
+        input[type="email"]::placeholder {
+            color: #666;
+        }
+
+        .footer-link {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .footer-link:hover {
+            color: #8b0000;
+        }
+
+        .social-icon {
+            color: #999;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .social-icon:hover {
+            color: #8b0000;
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
             letter-spacing: 0.15em;
-            pointer-events: none;
-            z-index: 100;
+        }
+
+        /* Newsletter section styling */
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            border-radius: 0;
+            max-width: none;
+            flex: 1;
+        }
+
+        .newsletter-form button {
+            border-radius: 0;
+            padding: 1rem 2rem;
+            background-color: #8b0000;
+            color: #e8e8e8;
+            border: 2px solid #8b0000;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #a00000;
+            border-color: #a00000;
+        }
+
+        @media (max-width: 640px) {
+            .newsletter-form {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+        /* Document number in footer */
+        .doc-number {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.1em;
+            opacity: 0.3;
+        }
+
+        /* Cookie banner styles */
+        #cookie-banner {
+            backdrop-filter: blur(10px);
+        }
+
+        .cookie-modal {
+            background-color: #1a1a1a;
+            border: 2px solid #8b0000;
+            padding: 2rem;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .cookie-modal h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Courier Prime', monospace;
+            letter-spacing: 0.1em;
+        }
+
+        .cookie-modal p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .cookie-modal button {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .cookie-accept {
+            background-color: #8b0000;
+            color: #e8e8e8;
+            border-color: #8b0000;
+        }
+
+        .cookie-accept:hover {
+            background-color: #a00000;
+        }
+
+        .cookie-decline {
+            background-color: transparent;
+            color: #e8e8e8;
+            border-color: #666;
+        }
+
+        .cookie-decline:hover {
+            background-color: #e8e8e8;
+            color: #0e0e0e;
         }
     </style>
 </head>
-<body class="bg-neutral-900 text-ink-black selection:bg-tactical-red selection:text-white font-mono overflow-x-hidden">
+<body class="antialiased">
 
-    <!-- Background Ambience -->
-    <div class="fixed inset-0 z-0 opacity-40 pointer-events-none">
-        <div class="absolute inset-0 bg-[url('https://www.fieldofcommand.com/images/map.webp')] bg-cover bg-center grayscale sepia-[.4]"></div>
-        <div class="absolute inset-0 bg-neutral-900/60"></div>
-    </div>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16">
+            <div class="max-w-5xl mx-auto">
+                <div class="classification-mark mb-4">/// CLASSIFIED ///</div>
 
-    <!-- MAIN DOSSIER CONTAINER -->
-    <div class="relative z-10 min-h-screen flex flex-col items-center pt-14 pb-12 px-2 sm:px-6">
-        
-        <!-- NAV -->
-        <!-- NAV -->
-        <nav class="fixed top-0 left-0 right-0 z-50 h-16 bg-paper-cream border-b-4 border-ink-black shadow-2xl flex items-end justify-between px-4 lg:px-12">
-            <div class="flex items-center gap-3">
-                <div class="h-4 w-4 bg-tactical-red"></div>
-                <span class="font-header text-2xl tracking-wide pt-1 text-ink-black">FIELD OF COMMAND</span>
-            </div>
-            
-            <div class="hidden md:flex gap-1 h-full items-end">
-                <a href="#briefing" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">BRIEFING</span>
-                </a>
-                <a href="#logistics" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">DOCTRINE</span>
-                </a>
-                <a href="#campaign" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">CAMPAIGNS</span>
-                </a>
-                <a href="#devlog" class="file-tab px-6 py-3 text-xs font-bold tracking-widest h-12 flex items-center">
-                    <span class="file-tab-text">DISPATCH</span>
-                </a>
-            </div>
+                <h1 class="hero-title mb-4">FIELD OF COMMAND</h1>
+                <h2 class="hero-subtitle mb-8 text-foc-red">OPERATIONAL WWII STRATEGY</h2>
 
-            <div class="flex items-center gap-4">
-                <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" aria-label="Enlist Now" class="bg-tactical-red text-white px-4 py-1 text-xs font-bold hover:bg-red-800 transition-colors border border-ink-black shadow-sm flex items-center gap-2 animate-pulse-slow">
-                    <i data-lucide="crosshair" class="w-3 h-3" aria-hidden="true"></i> <span class="hidden sm:inline">ENLIST NOW</span>
-                </a>
-                <button id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false" class="md:hidden p-2 text-ink-black hover:text-tactical-red"><i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i></button>
-            </div>
-        </nav>
+                <p class="hero-description mx-auto mb-12">
+                    An operational-scale WWII RTS built on intent, not reflexes. Command through your officers, not micromanagement. All the depth of a wargame, none of the spreadsheets.
+                </p>
 
-        <!-- MOBILE MENU -->
-        <nav id="mobile-menu" aria-label="Mobile navigation" class="fixed top-14 left-0 right-0 bg-paper-dark border-b-2 border-ink-black z-40 hidden md:hidden shadow-2xl">
-            <div class="flex flex-col p-4 space-y-3">
-                <a href="#briefing" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">BRIEFING</span>
-                </a>
-                <a href="#logistics" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">DOCTRINE</span>
-                </a>
-                <a href="#campaign" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">CAMPAIGNS</span>
-                </a>
-                <a href="#devlog" class="mobile-file-item pl-8 pr-4 py-4 font-header text-xl text-ink-black">
-                    <span class="relative z-10">DISPATCH</span>
-                </a>
-            </div>
-        </nav>
-
-        <!-- THE PAPER DOCUMENT -->
-        <main id="dossier" class="w-full max-w-5xl bg-paper-cream min-h-screen shadow-2xl relative border-x-2 border-ink-black/10 mt-4 overflow-hidden">
-            <!-- Coffee Stains -->
-            <div class="coffee-stain coffee-stain-1"></div>
-            <div class="coffee-stain coffee-stain-2"></div>
-            <div class="coffee-stain coffee-stain-3"></div>
-            
-            <div class="absolute top-8 right-8 border-4 border-tactical-red text-tactical-red px-4 py-1 font-header text-4xl transform -rotate-12 opacity-0 animate-stamp stamp-box z-10" style="animation-delay: 0.5s;">TOP SECRET</div>
-
-            <!-- HERO SECTION: THE VISION -->
-            <section id="briefing" class="p-8 md:p-16 border-b-2 border-ink-black/10 relative">
-                <div class="classified-watermark">CONFIDENTIAL</div>
-                <div class="flex flex-col md:flex-row gap-12">
-                    <div class="flex-1 z-30 animate-fade-up">
-                        <div class="flex items-center gap-2 text-xs font-bold text-neutral-500 mb-4 tracking-widest">
-                            <span>INTELLIGENCE BRIEF</span>
-                            <span>//</span>
-                            <span>TOP SECRET</span>
-                        </div>
-                        
-                        <h1 class="font-header text-6xl md:text-8xl leading-[0.85] mb-6">
-                            FIELD OF<br>COMMAND
-                        </h1>
-
-                        <p class="text-lg leading-relaxed mb-8 max-w-xl border-l-4 border-tactical-red pl-6">
-                            The first truly persistent theatre-scale RTS. From the desperate retreat of 1940 to the liberation of Europe. Lead a single force that survives, evolves, and remembers every battle. Rise from Subaltern to General—if you can survive the war's changing face.
-                        </p>
-                        
-                        <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 bg-ink-black text-paper-cream px-8 py-5 font-header text-3xl tracking-wide hover:bg-tactical-red transition-all group shadow-xl hover:-translate-y-1 transform">
-                            <i class="fa-brands fa-steam text-2xl group-hover:animate-bounce"></i>
-                            <span>WISHLIST ON STEAM</span>
-                        </a>
-                        <p class="mt-3 text-[10px] font-bold tracking-widest text-neutral-500 opacity-70">AWAITING ORDERS? ADD TO WISHLIST.</p>
-                    </div>
-
-                    <!-- ATTACHED PHOTO 1 -->
-                    <div class="w-full md:w-80 relative transform rotate-2 hover:rotate-0 transition-transform duration-500 z-30 mt-8 md:mt-0 cursor-zoom-in group vintage-photo" onclick="openLightbox(this)">
-                        <div class="paper-clip"></div>
-                        <div class="bg-white p-3 pb-8 shadow-photo border border-neutral-300">
-                            <img src="https://www.fieldofcommand.com/images/command.webp" alt="Tactical Map" width="800" height="600" loading="eager" class="w-full grayscale contrast-125 border border-neutral-200 group-hover:contrast-100 transition-all">
-                            <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center tracking-widest">FIG A: THEATRE OPERATIONS (1940-1945)</div>
-                        </div>
-                    </div>
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <a href="https://southers.itch.io/field-of-command" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        PLAY PROTOTYPE
+                    </a>
+                    <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        WISHLIST ON STEAM
+                    </a>
                 </div>
-            </section>
 
-            <!-- FILE FOLDER DIVIDER -->
-            <div class="section-divider py-8 bg-gradient-to-r from-transparent via-paper-dark to-transparent">
-                <div class="file-tab-divider">
-                    <span class="tab-label">/// SECTION ALPHA ///</span>
+                <!-- Social Links -->
+                <div class="flex justify-center gap-6">
+                    <a href="https://discord.gg/6mJq9XRzy" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="social-icon">
+                        <i class="fa-brands fa-discord"></i>
+                    </a>
+                    <a href="https://www.reddit.com/r/fieldofcommand/" target="_blank" rel="noopener noreferrer" aria-label="Reddit" class="social-icon">
+                        <i class="fa-brands fa-reddit-alien"></i>
+                    </a>
+                    <a href="https://x.com/FieldofCommand" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-icon">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@FieldofCommand" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-icon">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" aria-label="Steam" class="social-icon">
+                        <i class="fa-brands fa-steam"></i>
+                    </a>
                 </div>
             </div>
+        </section>
 
-            <!-- MECHANICS: THE ART OF COMMAND -->
-            <section id="logistics" class="border-b-4 border-ink-black/30 reveal bg-paper-cream">
-                <div class="classified-stamp" style="top: 30px; right: 30px; opacity: 0.12;">TOP SECRET</div>
-                <div class="classified-watermark" style="opacity: 0.015;">OPERATIONAL</div>
-                <!-- ROW 1 -->
-                <div class="grid md:grid-cols-2 border-b-2 border-ink-black/10">
-                    <!-- 1. OPERATIONAL INTENT -->
-                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative">
-                        <i data-lucide="crosshair" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">HIERARCHY</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            Most RTS games fail to simulate the hierarchy of battle. Soldiers need leaders on the ground, and HQ staff to manage everything from logistics to intelligence. In Field of Command, navigating the politics and bureaucracy of war is a central part of the moment to moment gameplay. How will you fair?
-                        </p>
-                        <!-- Attached Photo: HIERARCHY -->
-                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/structure.webp" alt="Command Structure" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG A: COMMAND STRUCTURE</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 2. HIERARCHY -->
-                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
-                        <i data-lucide="users" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                        <h2 class="font-header text-4xl mb-4 relative z-10">ORDERS</h2>
-                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                            In reality, no General magically sends orders to each man on the ground, who in turn reacts instantly and follows instructions meticulously. Field of Command orders are dispatched and interpreted by the receiver. Issue your orders based on intent. Define the objective, allocate the resources, and trust your officers to execute effectively.
-                        </p>
-                        <!-- Attached Photo: ORDERS -->
-                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/tactical.webp" alt="Tactical Orders Map" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG B: ORDERS & INTENT</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ROW 2 -->
-                <div class="grid md:grid-cols-2">
-                    <!-- 3. LOGISTICS -->
-                    <div class="p-8 md:p-16 border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 bg-paper-dark/20 relative">
-                        <i data-lucide="truck" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">LOGISTICS</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            Amateurs talk tactics. Professionals talk logistics. Secure your main supply routes, protect fuel depots, build ammo stocks, prioritise replacements and out manoeuvre your enemy in an attempt to cut them off. Play the long attritional game, or don't - it's up to you!
-                        </p>
-                        <!-- Attached Photo: LOGISTICS -->
-                        <div class="relative transform -rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 cursor-zoom-in group" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%;"></div>
-                            <div class="bg-white p-2 pb-6 shadow-photo border border-neutral-300">
-                                <img src="https://www.fieldofcommand.com/images/logistics.webp" alt="Supply Truck" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                <div class="font-mono text-[10px] text-neutral-500 mt-2 text-center">FIG C: SUPPLY LINES</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 4. PERSISTENCE -->
-                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
-                        <i data-lucide="shield" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                        <h2 class="font-header text-4xl mb-4 relative z-10">PERSISTENCE</h2>
-                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                            Your decisions echo through history. Your units and Commanders will stay from one operation to another. Lose a veteran battalion at Dunkirk? That's it, they are gone. Follow your men as they learn with you, acquiring new traits and skills, building experience and discovering new technologies - all leaning into the persistent war within Field of Command.
-                        </p>
-                        <!-- Attached Photo: PERSISTENCE -->
-                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/persistance.webp" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG D: BATTLE HONOURS</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 5. REALITY -->
-                    <div class="p-8 md:p-16 relative">
-                        <i data-lucide="medal" class="w-10 h-10 text-tactical-red mb-6"></i>
-                        <h2 class="font-header text-4xl mb-4">SCALE</h2>
-                        <p class="text-sm leading-relaxed mb-6">
-                            Using the power of the newest open source rendering technologies, witness massive Battles simulated in real time, down to the individual bullet level. Issue orders to entire divisions and watch the cascade of orders flow through the hierarchy down to each solider. Launch the largest amphibious in history, like never seen before.
-                        </p>
-                        <!-- Attached Photo: REALITY -->
-                        <div class="relative transform rotate-2 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/field.webp" alt="Unit Badges" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG E: CONTACT!</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 6. HISTORICAL AUTHENTICITY -->
-                    <div class="p-8 md:p-16 bg-ink-black text-paper-cream relative overflow-hidden">
-                        <i data-lucide="book-open" class="w-10 h-10 text-tactical-red mb-6 relative z-10"></i>
-                        <h2 class="font-header text-4xl mb-4 relative z-10">AUTHENTICITY</h2>
-                        <p class="text-sm leading-relaxed mb-6 opacity-80 relative z-10">
-                            History is not just a backdrop; it is the rulebook. Terrain generated from satellite telemetry and archived aerial photography. Orders of Battle sourced from regimental war diaries and official historical records. Unit emblems, camouflage patterns, uniforms, vehicle designations - you name it, we've sourced it. We believe historical authenticity is critical to the success of Field of Command.
-                        </p>
-                        <!-- Attached Photo: ARCHIVES -->
-                        <div class="relative transform rotate-3 mt-8 max-w-xs mx-auto md:mx-0 z-20 hover:rotate-0 transition-transform cursor-zoom-in" onclick="openLightbox(this)">
-                            <div class="paper-clip" style="right: 50%; background: #444;"></div>
-                            <div class="bg-paper-cream p-2 pb-6 shadow-photo border border-neutral-600">
-                                <img src="https://www.fieldofcommand.com/images/archives.webp" alt="Historical Archives" width="600" height="400" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                                <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">FIG F: THE ARCHIVES</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FILE FOLDER DIVIDER -->
-            <div class="section-divider py-8 bg-gradient-to-r from-transparent via-paper-dark to-transparent">
-                <div class="file-tab-divider">
-                    <span class="tab-label">/// SECTION BRAVO ///</span>
-                </div>
+        <!-- VISUAL ANCHOR (Screenshot) -->
+        <section class="py-16 px-6">
+            <div class="screenshot-container">
+                <img src="https://www.fieldofcommand.com/images/command.webp" alt="Field of Command - Theatre-scale operations" loading="lazy">
             </div>
+        </section>
 
-            <!-- CAMPAIGN TIMELINE: EVOLUTION OF WARFARE -->
-            <section id="campaign" class="p-8 md:p-16 border-b-4 border-ink-black/30 bg-gradient-to-b from-paper-dark/50 to-paper-dark/30 reveal">
-                <div class="classified-stamp" style="top: 40px; right: 40px; opacity: 0.1;">SECRET</div>
-                <div class="classified-watermark">RESTRICTED</div>
-                <div class="flex flex-col md:flex-row justify-between items-end mb-8">
-                    <div>
-                        <h2 class="font-header text-4xl md:text-5xl mb-2">V FOR VICTORY CAMPAIGN</h2>
-                        <p class="text-sm opacity-70 max-w-xl">
-                            From the darkest hours of Blitzkrieg to the crossing of the Rhine. One continuous career. One persistent army.
-                        </p>
-                    </div>
-                    <div class="text-[10px] font-bold uppercase tracking-widest text-neutral-500 mt-4 md:mt-0">
-                        <span class="hidden md:inline">REVIEW DOSSIER &larr; &rarr;</span>
-                        <span class="md:hidden">SWIPE FOR INTEL &rarr;</span>
-                    </div>
-                </div>
+        <!-- NEWSLETTER SECTION -->
+        <section class="py-24 px-6 text-center">
+            <div class="max-w-2xl mx-auto">
+                <h3 class="section-header text-2xl mb-3">DEVELOPMENT LOG</h3>
+                <p class="text-base mb-8 opacity-80">Sign up for technical briefings and playtest invitations.</p>
 
-                <!-- Carousel Container -->
-                <div class="relative">
-                    <!-- Navigation Arrows -->
-                    <button id="carousel-prev" class="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-tactical-red text-white w-12 h-12 items-center justify-center hover:bg-red-800 transition-colors border-2 border-ink-black shadow-lg disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Previous year">
-                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                    </button>
-                    <button id="carousel-next" class="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-tactical-red text-white w-12 h-12 items-center justify-center hover:bg-red-800 transition-colors border-2 border-ink-black shadow-lg disabled:opacity-30 disabled:cursor-not-allowed" aria-label="Next year">
-                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                    </button>
-
-                    <!-- Carousel Scroll Container -->
-                    <div id="carousel-container" class="relative bg-paper-cream border-2 border-ink-black/20 overflow-x-auto overflow-y-hidden timeline-scroll shadow-inner-file snap-x snap-mandatory scroll-smooth" style="scrollbar-width: thin;">
-                        <div class="flex gap-0 min-h-[500px]">
-
-                        <!-- 1940 Card -->
-                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="font-header text-6xl md:text-7xl text-tactical-red leading-none">1940</div>
-                                <div class="flex-1 pt-2">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
-                                        <span class="text-xs font-bold text-neutral-500">WESTERN FRONT</span>
-                                        <span class="text-[10px] bg-ink-black text-white px-2 uppercase">DOCTRINE: SURVIVAL</span>
-                                    </div>
-                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">DARKEST HOUR</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="flex-1 pr-0 md:pr-8">
-                                    <p class="text-sm md:text-base leading-relaxed mb-4">The Blitzkrieg has shattered the line. As a young Subaltern, you must fight a desperate rearguard action against overwhelming odds.</p>
-
-                                    <div class="space-y-3 text-xs md:text-sm">
-                                        <div>
-                                            <div class="font-bold text-tactical-red mb-2 tracking-wide">HISTORICAL CONTEXT:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">338,226 troops evacuated from Dunkirk</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-ink-black mb-2 tracking-wide">IN-GAME:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Conduct a fighting withdrawal</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Hold the line at all costs</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-80 flex-shrink-0">
-                                    <div class="border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="images/timeline/1940.png" alt="Dunkirk 1940 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 1941 Card -->
-                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1941</div>
-                                <div class="flex-1 pt-2">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
-                                        <span class="text-xs font-bold text-neutral-500">MEDITERRANEAN</span>
-                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: MANOEUVRE</span>
-                                    </div>
-                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">CROSSROADS</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="flex-1 pr-0 md:pr-8">
-                                    <p class="text-sm md:text-base leading-relaxed mb-4">From Compass to Crusader. Master the art of mobile warfare across the vast, unforgiving desert. Logistics will decide the victor.</p>
-
-                                    <div class="space-y-3 text-xs md:text-sm">
-                                        <div>
-                                            <div class="font-bold text-tactical-red mb-2 tracking-wide">HISTORICAL CONTEXT:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">Desert war: 1,800km from Alexandria to Tripoli</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-ink-black mb-2 tracking-wide">IN-GAME:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Execute long-range flanking manoeuvres</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Prioritise fuel over firepower</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-80 flex-shrink-0">
-                                    <div class="border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="images/timeline/1941.png" alt="North Africa 1941 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 1942 Card -->
-                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1942</div>
-                                <div class="flex-1 pt-2">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
-                                        <span class="text-xs font-bold text-neutral-500">NORTH AFRICA</span>
-                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: COMBINED ARMS</span>
-                                    </div>
-                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">TURNING POINT</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="flex-1 pr-0 md:pr-8">
-                                    <p class="text-sm md:text-base leading-relaxed mb-4">Turn the tide. Utilize massed artillery and coordinated assaults to break the Afrika Korps and secure the continent.</p>
-
-                                    <div class="space-y-3 text-xs md:text-sm">
-                                        <div>
-                                            <div class="font-bold text-tactical-red mb-2 tracking-wide">HISTORICAL CONTEXT:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">El Alamein: 195,000 Allied vs 104,000 Axis troops</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">Operation Torch: largest amphibious invasion to date</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-ink-black mb-2 tracking-wide">IN-GAME:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Execute set-piece breaching operations</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Coordinate artillery with armor exploitation</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-80 flex-shrink-0">
-                                    <div class="border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="images/timeline/1942.png" alt="El Alamein 1942 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 1943 Card -->
-                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1943</div>
-                                <div class="flex-1 pt-2">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
-                                        <span class="text-xs font-bold text-neutral-500">ITALY</span>
-                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: DIVISIONAL COMMAND</span>
-                                    </div>
-                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">LIBERATION</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="flex-1 pr-0 md:pr-8">
-                                    <p class="text-sm md:text-base leading-relaxed mb-4">The soft underbelly of Europe. Command major amphibious landings and grind through the brutal mountain passes of Italy.</p>
-
-                                    <div class="space-y-3 text-xs md:text-sm">
-                                        <div>
-                                            <div class="font-bold text-tactical-red mb-2 tracking-wide">HISTORICAL CONTEXT:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">Monte Cassino saw four major battles</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-ink-black mb-2 tracking-wide">IN-GAME:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Plan amphibious beach landings</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Overcome fortified mountain defenses</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-80 flex-shrink-0">
-                                    <div class="border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="images/timeline/1943.png" alt="Italy 1943 Concept Art" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 1944 Card -->
-                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="font-header text-6xl md:text-7xl text-ink-black leading-none">1944</div>
-                                <div class="flex-1 pt-2">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
-                                        <span class="text-xs font-bold text-neutral-500">NORTH-WEST EUROPE</span>
-                                        <span class="text-[10px] border border-ink-black px-2 uppercase">DOCTRINE: VERTICAL ENVELOPMENT</span>
-                                    </div>
-                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">CRUSADE</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="flex-1 pr-0 md:pr-8">
-                                    <p class="text-sm md:text-base leading-relaxed mb-4">The Great Crusade. Hold Corps-level command. Drop airborne divisions behind enemy lines and race across France.</p>
-
-                                    <div class="space-y-3 text-xs md:text-sm">
-                                        <div>
-                                            <div class="font-bold text-tactical-red mb-2 tracking-wide">HISTORICAL CONTEXT:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">D-Day: 156,000 troops land on Normandy beaches</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-ink-black mb-2 tracking-wide">IN-GAME:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Synchronize airborne and seaborne assaults</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Encircle the enemy in the Falaise Pocket</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-80 flex-shrink-0">
-                                    <div class="border-2 border-white shadow-sm transform -rotate-1 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="images/timeline/1944.png" alt="North-West Europe 1944 Concept Art (Placeholder)" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 1945 Card -->
-                        <div class="flex-shrink-0 w-full snap-start p-8 md:p-12 group border-l-2 border-ink-black/10">
-                            <div class="flex items-start gap-4 mb-4">
-                                <div class="font-header text-6xl md:text-7xl text-tactical-red leading-none">1945</div>
-                                <div class="flex-1 pt-2">
-                                    <div class="flex flex-wrap gap-2 items-baseline mb-2">
-                                        <span class="text-xs font-bold text-neutral-500">GERMANY</span>
-                                        <span class="text-[10px] bg-tactical-red text-white px-2 uppercase">DOCTRINE: TOTAL VICTORY</span>
-                                    </div>
-                                    <h3 class="font-header text-3xl md:text-4xl mb-3 group-hover:text-tactical-red transition-colors">CAULDRON</h3>
-                                </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row gap-6">
-                                <div class="flex-1 pr-0 md:pr-8">
-                                    <p class="text-sm md:text-base leading-relaxed mb-4">The final push. Cross the Rhine and crush the last desperate resistance in the heart of the Reich.</p>
-
-                                    <div class="space-y-3 text-xs md:text-sm">
-                                        <div>
-                                            <div class="font-bold text-tactical-red mb-2 tracking-wide">HISTORICAL CONTEXT:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3 text-center">•</span>
-                                                    <span class="flex-1">21st Army Group advances 500km in final 60 days</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <div class="font-bold text-ink-black mb-2 tracking-wide">IN-GAME:</div>
-                                            <ul class="space-y-2 opacity-80">
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Force opposed river crossings</span>
-                                                </li>
-                                                <li class="flex gap-2">
-                                                    <span class="flex-shrink-0 w-3">→</span>
-                                                    <span class="flex-1">Link up with Coalition forces</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-80 flex-shrink-0">
-                                    <div class="border-2 border-white shadow-sm transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
-                                        <img src="images/timeline/1945.png" alt="Germany 1945 Concept Art (Placeholder)" width="600" height="400" class="w-full grayscale contrast-125 group-hover:contrast-100 transition-all">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Indicators -->
-                    <div class="flex justify-center gap-2 mt-4">
-                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="0" aria-label="Go to 1940"></button>
-                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="1" aria-label="Go to 1941"></button>
-                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="2" aria-label="Go to 1942"></button>
-                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="3" aria-label="Go to 1943"></button>
-                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="4" aria-label="Go to 1944"></button>
-                        <button class="carousel-dot w-3 h-3 bg-ink-black/20 hover:bg-ink-black/40 transition-colors" data-index="5" aria-label="Go to 1945"></button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FUTURE OPERATIONS (ROADMAP) -->
-            <section id="future" class="p-8 md:p-16 border-b-4 border-tactical-red/50 relative reveal bg-ink-black text-paper-cream">
-                <div class="flex flex-col md:flex-row gap-12 relative z-10">
-                    <div class="flex-1">
-                        <h2 class="font-header text-4xl md:text-5xl mb-6 text-white flex items-center gap-3">
-                            <i data-lucide="globe" class="text-tactical-red"></i> FUTURE OPERATIONS
-                        </h2>
-                        <p class="text-lg leading-relaxed mb-8 border-l-4 border-tactical-red pl-6 opacity-90">
-                            The campaign expands beyond 1940-1945. New nations. New perspectives. New campaigns across multiple theatres of war.
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
-                                <div class="font-header text-2xl text-neutral-500 w-24">PHASE I</div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">ALTERNATE BRITISH CAMPAIGNS</h3>
-                                    <p class="text-xs max-w-sm">New alternate paths to follow with British & DUKE forces across multiple new theatres in the Victory campaign. Join operations in Norway, East Africa or Greece, plus lead The Forgotten Army through Burma where victory hung by a thread.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
-                                <div class="font-header text-2xl text-neutral-500 w-24">PHASE II</div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">US CAMPAIGN (EXPANSION)</h3>
-                                    <p class="text-xs max-w-sm">Join the Big Red One and experience the war from the American perspective! From the beaches of Algeria, to the city of Aachen and beyond, shape the American contribution and lead The Bloody First to the end.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
-                                <div class="font-header text-2xl text-neutral-500 w-24">PHASE III</div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">GERMAN CAMPAIGN (EXPANSION)</h3>
-                                    <p class="text-xs max-w-sm">Flip the tables and follow the Wehrmacht through their stunning Blitzkrieg campaigns of 1939-1941. Experience a new perspective with brand new content and features suited to the German way of war.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4 opacity-50 hover:opacity-100 transition-opacity">
-                                <div class="font-header text-2xl text-neutral-500 w-24">MORE</div>
-                                <div>
-                                    <h3 class="font-bold text-lg mb-1">TO COME</h3>
-                                    <p class="text-xs max-w-sm">More nations, more theatres, more history. Our ambition will never cease!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ATTACHED PHOTO: ROADMAP -->
-                    <div class="w-full md:w-96 relative transform rotate-1 hover:rotate-0 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this)">
-                        <div class="paper-clip" style="right: 40%; background: #444;"></div>
-                        <div class="bg-paper-cream p-3 pb-8 shadow-photo border border-neutral-600">
-                            <img src="https://www.fieldofcommand.com/images/roadmap.webp" alt="Global Roadmap" width="800" height="600" loading="lazy" class="w-full grayscale contrast-125 mix-blend-multiply">
-                            <div class="font-mono text-[10px] text-ink-black mt-2 text-center font-bold">CLASSIFIED: LONG TERM STRATEGY</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FILE FOLDER DIVIDER -->
-            <div class="section-divider py-8 bg-gradient-to-r from-transparent via-paper-dark to-transparent">
-                <div class="file-tab-divider">
-                    <span class="tab-label">/// SECTION CHARLIE ///</span>
-                </div>
+                <form id="signup-form" class="newsletter-form">
+                    <input type="email" id="email" placeholder="Enter Email Address" required aria-label="Email address">
+                    <button type="submit" id="submit-btn">TRANSMIT</button>
+                </form>
+                <div id="status-msg" class="mt-4 text-sm font-semibold min-h-[20px]"></div>
             </div>
+        </section>
 
-            <!-- DEVLOGS -->
-            <section id="devlog" class="p-8 md:p-16 border-b-4 border-ink-black/30 relative reveal bg-paper-dark/50">
-                <div class="classified-watermark" style="opacity: 0.018;">COMMS</div>
-                <h2 class="font-header text-4xl md:text-5xl mb-12 flex items-center gap-4">
-                    <i data-lucide="file-text" class="w-8 h-8 text-tactical-red"></i> FIELD REPORTS
-                </h2>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <article class="bg-white border border-ink-black p-6 shadow-md relative group hover:shadow-xl transition-shadow cursor-pointer">
-                        <div class="absolute top-4 right-4 text-[10px] font-bold border border-tactical-red text-tactical-red px-2 py-0.5 transform rotate-3 uppercase">Declassified</div>
-                        <div class="text-xs text-neutral-500 mb-2 font-bold tracking-widest">27 OCT 1944 (2025)</div>
-                        <h3 class="font-header text-3xl mb-3 group-hover:text-tactical-red transition-colors">THE PLAN</h3>
-                        <p class="text-sm mb-4 leading-relaxed">Prototype complete. Alpha development authorized. Our focus shifts to...</p>
-                        <span class="text-xs font-bold uppercase underline hover:text-tactical-red">READ DISPATCH &rarr;</span>
-                    </article>
-
-                    <article class="bg-white border border-ink-black p-6 shadow-md relative group hover:shadow-xl transition-shadow cursor-pointer">
-                        <div class="text-xs text-neutral-500 mb-2 font-bold tracking-widest">15 SEP 1944 (2025)</div>
-                        <h3 class="font-header text-3xl mb-3 group-hover:text-tactical-red transition-colors">THE VISION</h3>
-                        <p class="text-sm mb-4 leading-relaxed">Field of Command addresses a critical gap in tactical simulations. Our analysis suggests...</p>
-                        <span class="text-xs font-bold uppercase underline hover:text-tactical-red">READ DISPATCH &rarr;</span>
-                    </article>
+        <!-- FOOTER -->
+        <footer class="py-16 px-6 border-t border-white/10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Latest Dispatch -->
+                <div class="mb-8">
+                    <p class="classification-mark mb-2">LATEST DISPATCH:</p>
+                    <a href="https://www.fieldofcommand.com" class="footer-link text-base">
+                        The Plan - Development Update
+                    </a>
                 </div>
-            </section>
 
-            <!-- RELEASE DATE -->
-            <section class="p-8 md:p-16 border-b-4 border-tactical-red border-t-4 relative reveal bg-gradient-to-b from-tactical-red/5 to-ink-black/5">
-                <div class="classified-watermark" style="opacity: 0.02;">DEPLOYMENT SCHEDULE</div>
-                <div class="max-w-4xl mx-auto">
-                    <div class="text-center mb-12">
-                        <div class="text-xs font-bold uppercase tracking-[0.3em] text-tactical-red mb-3">Strategic Timeline</div>
-                        <h2 class="font-header text-4xl md:text-5xl text-ink-black">OPERATION ROADMAP</h2>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div id="reveal-card" class="deployment-card border-l-4 border-tactical-red bg-white p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:-translate-y-2 transform duration-300 relative group">
-                            <div class="absolute top-0 right-0 w-16 h-16 bg-tactical-red/10 transform rotate-45 group-hover:bg-tactical-red/20 transition-all"></div>
-                            <div class="text-xs font-bold uppercase tracking-widest text-tactical-red mb-4 relative z-10">▪ Phase One</div>
-                            <h3 class="font-header text-3xl mb-6 text-ink-black reveal-text">REVEAL</h3>
-                            <div class="border-t-2 border-tactical-red/30 pt-6">
-                                <p class="font-mono text-2xl font-bold text-ink-black reveal-date mb-3">Q2 2026</p>
-                                <p class="text-sm text-neutral-600 reveal-desc">Full gameplay reveal and expanded access</p>
-                            </div>
-                        </div>
-
-                        <div id="deployment-card" class="deployment-card border-l-4 border-tactical-red bg-paper-dark p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer hover:-translate-y-2 transform duration-300 text-paper-cream relative group">
-                            <div class="absolute top-0 right-0 w-16 h-16 bg-tactical-red/20 transform rotate-45 group-hover:bg-tactical-red/30 transition-all"></div>
-                            <div class="text-xs font-bold uppercase tracking-widest text-tactical-red mb-4 relative z-10">▪ Phase Two</div>
-                            <h3 class="font-header text-3xl mb-6 deployment-text">DEPLOYMENT</h3>
-                            <div class="border-t-2 border-tactical-red/50 pt-6">
-                                <p class="font-mono text-2xl font-bold deployment-date mb-3">Q4 2026</p>
-                                <p class="text-sm text-paper-cream/80 deployment-desc">Steam Early Access Launch</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FOOTER & SOCIALS -->
-            <section id="enlist" class="p-8 md:p-16 bg-gradient-to-b from-paper-dark to-paper-dark/80 relative overflow-hidden text-center reveal border-t-4 border-ink-black/20">
-                <div class="absolute -right-10 -bottom-10 text-9xl font-header text-ink-black opacity-5 transform -rotate-12 pointer-events-none">CONFIDENTIAL</div>
-                
-                <div class="max-w-xl mx-auto relative z-10">
-                    <div class="mb-16">
-                        <h4 class="font-bold text-xs uppercase tracking-[0.3em] mb-6 opacity-60">SIGNALS CHANNELS</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <a href="https://discord.gg/6mJq9XRzy" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
-                                <i class="fa-brands fa-discord text-2xl group-hover:text-[#5865F2]"></i>
-                                <span class="text-[10px] font-bold uppercase">Discord</span>
-                            </a>
-                            <a href="https://www.reddit.com/r/fieldofcommand/" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
-                                <i class="fa-brands fa-reddit-alien text-2xl group-hover:text-[#FF4500]"></i>
-                                <span class="text-[10px] font-bold uppercase">Reddit</span>
-                            </a>
-                            <a href="https://www.youtube.com/@FieldofCommand" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
-                                <i class="fa-brands fa-youtube text-2xl group-hover:text-[#FF0000]"></i>
-                                <span class="text-[10px] font-bold uppercase">Briefings</span>
-                            </a>
-                            <a href="https://store.steampowered.com" class="flex flex-col items-center gap-2 p-4 border border-ink-black/20 hover:bg-white hover:border-ink-black transition-all group">
-                                <i class="fa-brands fa-steam text-2xl group-hover:text-[#171a21]"></i>
-                                <span class="text-[10px] font-bold uppercase">Steam</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <h2 class="font-header text-5xl mb-4">MONTHLY SIT REPS</h2>
-                    <p class="text-sm mb-8">Sign up for Field Reports. Operational updates, intelligence briefings, and classified previews—delivered direct to your command post.</p>
-                    
-                    <form id="signup-form" class="relative">
-                        <div class="flex flex-col sm:flex-row gap-0 shadow-lg">
-                            <input type="email" id="email" placeholder="ENTER SIGNALS ADDRESS" required class="flex-1 pl-4 py-4 bg-paper-cream border-2 border-ink-black focus:outline-none focus:border-tactical-red font-mono text-sm">
-                            <button type="submit" id="submit-btn" class="bg-ink-black text-paper-cream px-8 py-4 font-header text-xl hover:bg-tactical-red transition-colors border-y-2 border-r-2 border-l-0 border-ink-black">TRANSMIT</button>
-                        </div>
-                        <div id="status-msg" class="mt-4 text-xs font-bold min-h-[20px]"></div>
-                    </form>
-
-                    <!-- BOTTOM WISHLIST CTA -->
-                    <div class="mt-16 pt-12 border-t-2 border-ink-black/20">
-                        <div class="text-center mb-6">
-                            <p class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">/// MISSION CRITICAL ///</p>
-                            <h3 class="font-header text-3xl md:text-4xl mb-3">SUPPORT THE WAR EFFORT</h3>
-                            <p class="text-sm opacity-70">Mobilization depends on your support. Add to Wishlist to boost our operational capacity.</p>
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-4 bg-ink-black text-paper-cream px-10 py-6 font-header text-4xl tracking-wide hover:bg-tactical-red transition-all group shadow-2xl hover:-translate-y-1 transform">
-                                <i class="fa-brands fa-steam text-3xl group-hover:animate-bounce"></i>
-                                <span>WISHLIST NOW</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="mt-12 pt-8 border-t border-ink-black/10 text-[10px] text-neutral-500 flex flex-col items-center gap-2">
-                        <span>&copy; 2025 FIELD OF COMMAND</span>
-                        <div class="flex gap-4 mt-2">
-                             <a href="privacy.html" class="hover:underline">Privacy Policy</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
+                <!-- Copyright & Doc Number -->
+                <p class="text-sm opacity-50 mb-2">© 2025 Field of Command.</p>
+                <p class="doc-number">DOC. #4127-B // <span id="current-date"></span> // CONFIDENTIAL</p>
+            </div>
+        </footer>
+    </main>
 
     <!-- GDPR COOKIE BANNER -->
-    <div id="cookie-banner" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-paper-cream border-4 border-tactical-red shadow-2xl max-w-2xl w-full p-8 relative transform scale-95 opacity-0 transition-all duration-300" id="cookie-modal">
-            <div class="absolute top-4 right-4 text-tactical-red text-xs font-bold border border-tactical-red px-2 py-1 transform rotate-3">URGENT</div>
-
-            <h3 class="font-header text-3xl mb-4 text-ink-black">COOKIE NOTICE</h3>
-
-            <div class="text-sm leading-relaxed mb-6 text-ink-black">
-                <p class="mb-3">
-                    <strong class="text-tactical-red">/// OPERATIONAL NOTICE:</strong> This site uses cookies to track analytics and improve your experience.
-                </p>
-                <p class="text-xs opacity-70">
-                    We use Google Analytics to understand how visitors interact with our site. You can accept cookies to help us improve, or decline if you prefer. See our <a href="privacy.html" class="underline hover:text-tactical-red">Privacy Policy</a> for details.
-                </p>
-            </div>
+    <div id="cookie-banner" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="cookie-modal" id="cookie-modal">
+            <h3>COOKIE NOTICE</h3>
+            <p class="mb-3">
+                This site uses cookies to track analytics and improve your experience.
+            </p>
+            <p class="text-xs mb-6 opacity-80">
+                We use Google Analytics to understand how visitors interact with our site. You can accept cookies to help us improve, or decline if you prefer.
+                See our <a href="privacy.html" class="underline hover:text-foc-red">Privacy Policy</a> for details.
+            </p>
 
             <div class="flex flex-col sm:flex-row gap-3">
-                <button onclick="acceptCookies()" class="flex-1 bg-tactical-red text-white px-6 py-3 font-header uppercase hover:bg-red-700 text-sm transition-colors border-2 border-ink-black shadow-md">
+                <button onclick="acceptCookies()" class="cookie-accept flex-1">
                     ACCEPT COOKIES
                 </button>
-                <button onclick="rejectCookies()" class="flex-1 bg-white text-ink-black px-6 py-3 font-header uppercase hover:bg-neutral-100 text-sm transition-colors border-2 border-ink-black shadow-md">
+                <button onclick="rejectCookies()" class="cookie-decline flex-1">
                     DECLINE
                 </button>
             </div>
         </div>
-    </div>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-screen border-4 border-white shadow-2xl transform scale-95 transition-transform duration-300">
-        <div class="absolute bottom-8 text-white font-mono text-xs tracking-widest">CLICK ANYWHERE OR PRESS ESC TO CLOSE</div>
-    </div>
-
-    <!-- DOCUMENT PAGE NUMBER -->
-    <div class="page-number">
-        DOC. #4127-B // PAGE 01 OF 04 // CONFIDENTIAL
     </div>
 
     <script src="js/main.js"></script>
