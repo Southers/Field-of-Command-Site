@@ -195,6 +195,16 @@ function setupEventTracking() {
         });
     });
 
+    document.querySelectorAll('a[href*="reddit"]').forEach(link => {
+        link.addEventListener('click', () => {
+            trackEvent('social_click', {
+                'event_category': 'engagement',
+                'event_label': 'reddit',
+                'link_url': link.href
+            });
+        });
+    });
+
     document.querySelectorAll('a[href*="x.com"], a[href*="twitter"]').forEach(link => {
         link.addEventListener('click', () => {
             trackEvent('social_click', {
