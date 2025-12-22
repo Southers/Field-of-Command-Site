@@ -4,22 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Field of Command</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Courier New', Courier, monospace; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #1a1a1a; background: #e8e4d9; }
-        h1 { border-bottom: 2px solid #b91c1c; padding-bottom: 10px; text-transform: uppercase; }
-        h2 { color: #b91c1c; margin-top: 30px; text-transform: uppercase; font-size: 1.2rem; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: #b91c1c; text-decoration: none; font-weight: bold; border: 1px solid #1a1a1a; padding: 5px 10px; background: #fff; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #e8e8e8;
+            background: #0e0e0e;
+        }
+
+        h1 {
+            font-family: 'Courier Prime', monospace;
+            border-bottom: 2px solid #8b0000;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Courier Prime', monospace;
+            color: #8b0000;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #e8e8e8;
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #e8e8e8;
+        }
+
+        a {
+            color: #8b0000;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #a00000;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #e8e8e8;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Courier Prime', monospace;
+            border: 2px solid #e8e8e8;
+            padding: 10px 20px;
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: #e8e8e8;
+            color: #0e0e0e;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            background: #1a1a1a;
+            border: 1px solid #333;
+        }
+
+        th {
+            background: #8b0000;
+            color: #e8e8e8;
+            padding: 12px;
+            text-align: left;
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            color: #e8e8e8;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .meta-info {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        .classification-mark {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            opacity: 0.4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-link">&larr; RETURN TO HQ</a>
-    
-    <h1>Privacy Protocols</h1>
-    <p><strong>Last Updated:</strong> 3 December 2025</p>
-    <p><strong>Effective Date:</strong> 3 December 2025</p>
+    <div class="classification-mark">/// PRIVACY PROTOCOLS ///</div>
+
+    <a href="index.html" class="back-link">&larr; Return to HQ</a>
+
+    <h1>Privacy Policy</h1>
+
+    <div class="meta-info">
+        <p><strong>Last Updated:</strong> 3 December 2025</p>
+        <p><strong>Effective Date:</strong> 3 December 2025</p>
+    </div>
 
     <h2>1. Data Controller Identity</h2>
-    <p>This terminal is operated by the developers of <strong>Field of Command</strong>.</p>
+    <p>This site is operated by the developers of <strong>Field of Command</strong>.</p>
     <p><strong>Contact for Data Protection Queries:</strong> support@fieldofcommand.com</p>
     <p>For any questions about how we handle your personal data, please contact us at the address above.</p>
 
@@ -30,8 +164,8 @@
         <li><strong>Legitimate Interest:</strong> To improve our website and understand how visitors use our services.</li>
     </ul>
 
-    <h2>3. Intelligence Collection</h2>
-    <p>We only collect the following data when you voluntarily enlist:</p>
+    <h2>3. Data Collection</h2>
+    <p>We only collect the following data when you voluntarily provide it:</p>
     <ul>
         <li><strong>Email Address:</strong> Collected via our sign-up form for the Field Report newsletter. Stored in Cloudflare KV database.</li>
         <li><strong>IP Address:</strong> Temporarily stored for rate limiting purposes (deleted after 1 hour).</li>
@@ -73,8 +207,8 @@
 
     <h2>7. Cookies & Tracking Technologies</h2>
     <p>We use cookies only with your explicit consent. You can accept or reject cookies via our cookie banner.</p>
-    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; margin-top: 10px; border-collapse: collapse;">
-        <tr style="background: #d6d2c4;">
+    <table>
+        <tr>
             <th>Cookie Name</th>
             <th>Purpose</th>
             <th>Duration</th>
@@ -99,7 +233,7 @@
             <td>Analytics (Requires Consent)</td>
         </tr>
     </table>
-    <p style="margin-top: 10px;"><strong>Note:</strong> Analytics cookies are ONLY set if you click "CONFIRM" on the cookie banner.</p>
+    <p><strong>Note:</strong> Analytics cookies are ONLY set if you click "ACCEPT COOKIES" on the cookie banner.</p>
 
     <h2>8. Your Rights Under UK GDPR</h2>
     <p>You have the following rights regarding your personal data:</p>
