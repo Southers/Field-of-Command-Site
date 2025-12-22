@@ -241,10 +241,8 @@ if (form && statusMsg && submitBtn) {
             const data = await response.json();
 
             if (response.ok) {
-                statusMsg.textContent = "/// TRANSMISSION RECEIVED ///";
+                statusMsg.textContent = "Transmission received. You're on the list.";
                 statusMsg.style.color = '#8b0000';
-                statusMsg.style.fontFamily = "'Courier Prime', monospace";
-                statusMsg.style.letterSpacing = '0.1em';
                 form.reset();
 
                 // Track successful newsletter signup
@@ -255,24 +253,20 @@ if (form && statusMsg && submitBtn) {
                 });
             } else {
                 // Handle specific error cases
-                let errorMessage = "/// TRANSMISSION FAILED ///";
+                let errorMessage = "Failed. Please try again.";
                 if (response.status === 429) {
-                    errorMessage = "/// TOO MANY REQUESTS ///";
+                    errorMessage = "Too many requests. Try again later.";
                 } else if (response.status === 409) {
-                    errorMessage = "/// ALREADY REGISTERED ///";
+                    errorMessage = "Email already registered.";
                 } else if (data.error) {
-                    errorMessage = `/// ${data.error.toUpperCase()} ///`;
+                    errorMessage = data.error;
                 }
                 statusMsg.textContent = errorMessage;
-                statusMsg.style.color = '#1a1a1a';
-                statusMsg.style.fontFamily = "'Courier Prime', monospace";
-                statusMsg.style.letterSpacing = '0.1em';
+                statusMsg.style.color = '#e8e8e8';
             }
         } catch (error) {
-            statusMsg.textContent = "/// CONNECTION FAILED ///";
-            statusMsg.style.color = '#1a1a1a';
-            statusMsg.style.fontFamily = "'Courier Prime', monospace";
-            statusMsg.style.letterSpacing = '0.1em';
+            statusMsg.textContent = "Connection failed. Please try again.";
+            statusMsg.style.color = '#e8e8e8';
         } finally {
             submitBtn.innerHTML = "TRANSMIT";
             submitBtn.disabled = false;

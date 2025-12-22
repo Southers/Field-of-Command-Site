@@ -38,10 +38,9 @@
             theme: {
                 extend: {
                     colors: {
-                        'paper': '#e8e4d9',
-                        'paper-dark': '#d6d2c4',
-                        'ink': '#1a1a1a',
-                        'stamp-red': '#8b0000',
+                        'foc-bg': '#0e0e0e',
+                        'foc-text': '#e8e8e8',
+                        'foc-red': '#8b0000',
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -54,76 +53,38 @@
 
     <style>
         body {
-            background-color: #e8e4d9;
-            color: #1a1a1a;
+            background-color: #0e0e0e;
+            color: #e8e8e8;
             font-family: 'Inter', system-ui, sans-serif;
-            position: relative;
-        }
-
-        /* Subtle paper texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Faint classification watermark */
-        body::after {
-            content: 'CLASSIFIED';
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 12rem;
-            font-weight: 700;
-            font-family: 'Courier Prime', monospace;
-            color: #8b0000;
-            opacity: 0.02;
-            pointer-events: none;
-            white-space: nowrap;
-            z-index: 1;
-            letter-spacing: 1rem;
-        }
-
-        main {
-            position: relative;
-            z-index: 2;
         }
 
         .hero-title {
             font-size: clamp(3rem, 10vw, 6rem);
             font-weight: 700;
             line-height: 1;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             font-family: 'Courier Prime', monospace;
         }
 
         .hero-subtitle {
             font-size: clamp(1rem, 3vw, 1.5rem);
             font-weight: 700;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             font-family: 'Courier Prime', monospace;
         }
 
         .hero-description {
             font-size: clamp(1rem, 2vw, 1.125rem);
-            line-height: 1.7;
+            line-height: 1.6;
             max-width: 42rem;
         }
 
         .classification-mark {
             font-family: 'Courier Prime', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            opacity: 0.5;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            opacity: 0.4;
         }
 
         .btn {
@@ -132,8 +93,8 @@
             font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            border: 3px solid transparent;
+            letter-spacing: 0.1em;
+            border: 2px solid transparent;
             transition: all 0.2s ease;
             cursor: pointer;
             font-family: 'Courier Prime', monospace;
@@ -142,7 +103,7 @@
 
         .btn-primary {
             background-color: #8b0000;
-            color: #e8e4d9;
+            color: #e8e8e8;
             border-color: #8b0000;
         }
 
@@ -150,20 +111,20 @@
             background-color: #a00000;
             border-color: #a00000;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(139, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: #1a1a1a;
-            border-color: #1a1a1a;
+            color: #e8e8e8;
+            border-color: #e8e8e8;
         }
 
         .btn-secondary:hover {
-            background-color: #1a1a1a;
-            color: #e8e4d9;
+            background-color: #e8e8e8;
+            color: #0e0e0e;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(26, 26, 26, 0.2);
+            box-shadow: 0 4px 12px rgba(232, 232, 232, 0.2);
         }
 
         /* Stamp effect on click */
@@ -172,8 +133,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-12deg);
-            font-size: 2rem;
+            transform: translate(-50%, -50%) rotate(-8deg);
+            font-size: 1.5rem;
             color: #8b0000;
             opacity: 0;
             font-weight: 700;
@@ -185,36 +146,33 @@
         @keyframes stamp {
             0% {
                 opacity: 0;
-                transform: translate(-50%, -50%) rotate(-12deg) scale(0);
+                transform: translate(-50%, -50%) rotate(-8deg) scale(0);
             }
             50% {
-                opacity: 0.6;
-                transform: translate(-50%, -50%) rotate(-12deg) scale(1.2);
+                opacity: 0.8;
+                transform: translate(-50%, -50%) rotate(-8deg) scale(1.2);
             }
             100% {
                 opacity: 0;
-                transform: translate(-50%, -50%) rotate(-12deg) scale(1);
+                transform: translate(-50%, -50%) rotate(-8deg) scale(1);
             }
         }
 
         .screenshot-container {
             max-width: 1200px;
             margin: 0 auto;
-            border: 3px solid #1a1a1a;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .screenshot-container img {
             width: 100%;
             height: auto;
             display: block;
-            filter: grayscale(0.3) contrast(1.1);
         }
 
         input[type="email"] {
-            background-color: #fff;
-            border: 2px solid #1a1a1a;
-            color: #1a1a1a;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            color: #e8e8e8;
             padding: 1rem 1.5rem;
             font-size: 1rem;
             width: 100%;
@@ -226,29 +184,26 @@
         input[type="email"]:focus {
             outline: none;
             border-color: #8b0000;
-            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
         }
 
         input[type="email"]::placeholder {
-            color: #999;
-            font-family: 'Courier Prime', monospace;
+            color: #666;
         }
 
         .footer-link {
-            color: #1a1a1a;
+            color: #999;
             text-decoration: none;
             transition: color 0.2s ease;
             font-size: 0.875rem;
-            border-bottom: 1px solid transparent;
         }
 
         .footer-link:hover {
             color: #8b0000;
-            border-bottom-color: #8b0000;
         }
 
         .social-icon {
-            color: #1a1a1a;
+            color: #999;
             font-size: 1.5rem;
             transition: all 0.2s ease;
         }
@@ -261,7 +216,7 @@
         .section-header {
             font-family: 'Courier Prime', monospace;
             font-weight: 700;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.15em;
         }
 
         /* Newsletter section styling */
@@ -276,18 +231,17 @@
             border-radius: 0;
             max-width: none;
             flex: 1;
-            border-right: none;
         }
 
         .newsletter-form button {
             border-radius: 0;
             padding: 1rem 2rem;
             background-color: #8b0000;
-            color: #e8e4d9;
+            color: #e8e8e8;
             border: 2px solid #8b0000;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             cursor: pointer;
             transition: all 0.2s ease;
             white-space: nowrap;
@@ -305,31 +259,9 @@
                 gap: 0.5rem;
             }
 
-            .newsletter-form input {
-                border-right: 2px solid #1a1a1a;
-            }
-
             .newsletter-form button {
                 width: 100%;
             }
-        }
-
-        /* Top secret stamp */
-        .top-secret-stamp {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            font-family: 'Courier Prime', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #8b0000;
-            opacity: 0.15;
-            transform: rotate(12deg);
-            border: 4px solid #8b0000;
-            padding: 0.5rem 1rem;
-            pointer-events: none;
-            letter-spacing: 0.3em;
-            z-index: 10;
         }
 
         /* Document number in footer */
@@ -337,7 +269,7 @@
             font-family: 'Courier Prime', monospace;
             font-size: 0.625rem;
             letter-spacing: 0.1em;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         /* Cookie banner styles */
@@ -346,11 +278,11 @@
         }
 
         .cookie-modal {
-            background-color: #d6d2c4;
-            border: 3px solid #8b0000;
+            background-color: #1a1a1a;
+            border: 2px solid #8b0000;
             padding: 2rem;
             max-width: 600px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
         .cookie-modal h3 {
@@ -364,7 +296,7 @@
         .cookie-modal p {
             font-size: 0.875rem;
             line-height: 1.6;
-            color: #1a1a1a;
+            color: #ccc;
             margin-bottom: 1.5rem;
         }
 
@@ -373,7 +305,7 @@
             font-size: 0.875rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             cursor: pointer;
             transition: all 0.2s ease;
             border: 2px solid transparent;
@@ -382,7 +314,7 @@
 
         .cookie-accept {
             background-color: #8b0000;
-            color: #e8e4d9;
+            color: #e8e8e8;
             border-color: #8b0000;
         }
 
@@ -392,29 +324,26 @@
 
         .cookie-decline {
             background-color: transparent;
-            color: #1a1a1a;
-            border-color: #1a1a1a;
+            color: #e8e8e8;
+            border-color: #666;
         }
 
         .cookie-decline:hover {
-            background-color: #1a1a1a;
-            color: #e8e4d9;
+            background-color: #e8e8e8;
+            color: #0e0e0e;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- TOP SECRET STAMP -->
-    <div class="top-secret-stamp">TOP SECRET</div>
-
     <main>
         <!-- HERO SECTION -->
         <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16">
             <div class="max-w-5xl mx-auto">
-                <div class="classification-mark mb-4">/// INTELLIGENCE BRIEF /// CLASSIFIED ///</div>
+                <div class="classification-mark mb-4">/// CLASSIFIED ///</div>
 
                 <h1 class="hero-title mb-4">FIELD OF COMMAND</h1>
-                <h2 class="hero-subtitle mb-8 text-stamp-red">OPERATIONAL WWII STRATEGY</h2>
+                <h2 class="hero-subtitle mb-8 text-foc-red">OPERATIONAL WWII STRATEGY</h2>
 
                 <p class="hero-description mx-auto mb-12">
                     A persistent, theatre-scale RTS. Lead a single force from the retreat of 1940 to the liberation of Europe.
@@ -435,7 +364,6 @@
 
         <!-- VISUAL ANCHOR (Screenshot) -->
         <section class="py-16 px-6">
-            <div class="classification-mark text-center mb-4">/// VISUAL INTELLIGENCE ///</div>
             <div class="screenshot-container">
                 <img src="https://www.fieldofcommand.com/images/command.webp" alt="Field of Command - Theatre-scale operations" loading="lazy">
             </div>
@@ -444,12 +372,11 @@
         <!-- NEWSLETTER SECTION -->
         <section class="py-24 px-6 text-center">
             <div class="max-w-2xl mx-auto">
-                <div class="classification-mark mb-4">>>> COMMUNICATIONS <<<</div>
                 <h3 class="section-header text-2xl mb-3">DEVELOPMENT LOG</h3>
                 <p class="text-base mb-8 opacity-80">Sign up for technical briefings and playtest invitations.</p>
 
                 <form id="signup-form" class="newsletter-form">
-                    <input type="email" id="email" placeholder="ENTER EMAIL ADDRESS" required aria-label="Email address">
+                    <input type="email" id="email" placeholder="Enter Email Address" required aria-label="Email address">
                     <button type="submit" id="submit-btn">TRANSMIT</button>
                 </form>
                 <div id="status-msg" class="mt-4 text-sm font-semibold min-h-[20px]"></div>
@@ -457,12 +384,12 @@
         </section>
 
         <!-- FOOTER -->
-        <footer class="py-16 px-6 border-t-2 border-ink/20">
+        <footer class="py-16 px-6 border-t border-white/10">
             <div class="max-w-4xl mx-auto text-center">
                 <!-- Latest Dispatch -->
                 <div class="mb-8">
                     <p class="classification-mark mb-2">LATEST DISPATCH:</p>
-                    <a href="https://www.fieldofcommand.com" class="footer-link text-base font-semibold">
+                    <a href="https://www.fieldofcommand.com" class="footer-link text-base">
                         The Plan - Development Update
                     </a>
                 </div>
@@ -481,14 +408,14 @@
                 </div>
 
                 <!-- Copyright & Doc Number -->
-                <p class="text-sm opacity-60 mb-2">© 2025 Field of Command.</p>
+                <p class="text-sm opacity-50 mb-2">© 2025 Field of Command.</p>
                 <p class="doc-number">DOC. #4127-B // <span id="current-date"></span> // CONFIDENTIAL</p>
             </div>
         </footer>
     </main>
 
     <!-- GDPR COOKIE BANNER -->
-    <div id="cookie-banner" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+    <div id="cookie-banner" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
         <div class="cookie-modal" id="cookie-modal">
             <h3>COOKIE NOTICE</h3>
             <p class="mb-3">
@@ -496,7 +423,7 @@
             </p>
             <p class="text-xs mb-6 opacity-80">
                 We use Google Analytics to understand how visitors interact with our site. You can accept cookies to help us improve, or decline if you prefer.
-                See our <a href="privacy.html" class="underline hover:text-stamp-red">Privacy Policy</a> for details.
+                See our <a href="privacy.html" class="underline hover:text-foc-red">Privacy Policy</a> for details.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3">
