@@ -38,8 +38,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'foc-bg': '#0e0e0e',
-                        'foc-text': '#e8e8e8',
+                        'foc-bg': '#0a0a0a',
+                        'foc-text': '#e0e0e0',
                         'foc-red': '#8b0000',
                     },
                     fontFamily: {
@@ -54,9 +54,10 @@
 
     <style>
         body {
-            background-color: #0e0e0e;
-            color: #e8e8e8;
+            background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+            color: #e0e0e0;
             font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
         }
 
         .hero-title {
@@ -82,10 +83,17 @@
         }
 
         .classification-mark {
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.7rem;
+            font-family: 'Black Ops One', cursive;
+            font-size: 0.9rem;
             letter-spacing: 0.15em;
-            opacity: 0.4;
+            color: #8b0000;
+            opacity: 0.8;
+            border: 2px solid rgba(139, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            transform: rotate(-2deg);
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
         .btn {
