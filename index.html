@@ -26,7 +26,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Special+Elite&display=swap" rel="stylesheet">
 
     <!-- Font Awesome for brand icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -43,8 +43,9 @@
                         'foc-red': '#8b0000',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['Courier Prime', 'Courier New', 'monospace'],
+                        sans: ['Special Elite', 'system-ui', 'monospace'], // Using special elite as primary body font for typewriter feel
+                        mono: ['Special Elite', 'monospace'],
+                        header: ['Black Ops One', 'cursive'],
                     },
                 }
             }
@@ -60,18 +61,18 @@
 
         .hero-title {
             font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 700;
+            font-weight: 400;
             line-height: 1;
             letter-spacing: 0.05em;
-            font-family: 'Courier Prime', monospace;
+            font-family: 'Black Ops One', cursive;
         }
 
         .hero-subtitle {
             font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 700;
+            font-weight: 400;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            font-family: 'Courier Prime', monospace;
+            font-family: 'Black Ops One', cursive;
         }
 
         .hero-description {
@@ -340,9 +341,11 @@
         <!-- HERO SECTION -->
         <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-16">
             <div class="max-w-5xl mx-auto">
-                <div class="classification-mark mb-4">/// CLASSIFIED ///</div>
+                <a href="https://www.fieldworkgames.com" target="_blank" rel="noopener noreferrer" class="block mb-8 hover:scale-105 transition-transform duration-300">
+                    <img src="images/studio_logo.jpg" alt="FieldWork Games" class="w-20 h-20 mx-auto rounded-full border-2 border-foc-red shadow-[0_0_15px_rgba(139,0,0,0.5)]">
+                </a>
 
-                <img src="images/studio_logo.jpg" alt="FieldWork Games" class="w-16 h-16 mx-auto mb-6 rounded-full border-2 border-foc-red shadow-lg opacity-90 hover:opacity-100 transition-opacity">
+                <div class="classification-mark mb-6">/// CLASSIFIED ///</div>
 
                 <h1 class="hero-title mb-4">FIELD OF COMMAND</h1>
                 <h2 class="hero-subtitle mb-8 text-foc-red">OPERATIONAL WWII STRATEGY</h2>
@@ -406,13 +409,7 @@
         <!-- FOOTER -->
         <footer class="py-16 px-6 border-t border-white/10">
             <div class="max-w-4xl mx-auto text-center">
-                <!-- Latest Dispatch -->
-                <div class="mb-8">
-                    <p class="classification-mark mb-2">LATEST DISPATCH:</p>
-                    <a href="https://www.fieldofcommand.com" class="footer-link text-base">
-                        The Plan - Development Update
-                    </a>
-                </div>
+                <!-- Latest Dispatch Removed -->
 
                 <!-- Copyright & Doc Number -->
                 <p class="text-sm opacity-50 mb-2">© 2026 FieldWork Games.</p>
