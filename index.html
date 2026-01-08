@@ -54,10 +54,47 @@
 
     <style>
         body {
-            background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+            background: linear-gradient(rgba(10, 10, 10, 0.92), rgba(5, 5, 5, 0.95)), url('images/tactical_map_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #e0e0e0;
             font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
+        }
+
+        .dossier-panel {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .dossier-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b0000, transparent);
+            opacity: 0.5;
+        }
+
+        .feature-title {
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #8b0000;
+            padding-left: 1rem;
+        }
+
+        .feature-text {
+            font-family: 'Special Elite', monospace;
+            font-size: 1rem;
+            color: #cccccc;
+            line-height: 1.6;
         }
 
         .hero-title {
@@ -352,8 +389,8 @@
                 <h1 class="hero-title mb-4">FIELD OF COMMAND</h1>
                 <h2 class="hero-subtitle mb-8 text-foc-red">OPERATIONAL WWII STRATEGY</h2>
 
-                <p class="hero-description mx-auto mb-12">
-                    An operational-scale WWII RTS built on intent, not reflexes. Command through your officers, not micromanagement. All the depth of a wargame, none of the spreadsheets.
+                <p class="hero-description mx-auto mb-12 font-mono text-gray-400">
+                    Lead a British company from the retreat at Dunkirk to the Rhine crossing in this operational-scale RTS. Experience the "Mission Command" system where you orchestrate maneuvers through a realistic hierarchy of AI subordinates, manage physical supply lines, and preserve a veteran core of troops and commanders across a persistent WWII career.
                 </p>
 
                 <!-- CTA Buttons -->
@@ -388,9 +425,65 @@
         </section>
 
         <!-- VISUAL ANCHOR (Screenshot) -->
-        <section class="py-16 px-6">
-            <div class="screenshot-container">
-                <img src="images/header.png" alt="Field of Command - Theatre-scale operations" loading="lazy">
+        <section class="py-12 px-6">
+            <div class="screenshot-container relative group">
+                <img src="images/header.png" alt="Field of Command - Theatre-scale operations" loading="lazy" class="border border-white/10 shadow-2xl">
+                <div class="absolute inset-0 border border-white/5 pointer-events-none"></div>
+            </div>
+        </section>
+
+        <!-- GAME FEATURES DOSSIER -->
+        <section class="py-16 px-6 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- 1. The Living Canvas -->
+                <div class="dossier-panel p-8 hover:bg-black/40 transition-colors duration-300">
+                    <h3 class="feature-title">THE LIVING CANVAS</h3>
+                    <p class="feature-text mb-4">
+                        Experience the war through a "painterly diorama" aesthetic. The world renders like a moving oil painting, transitioning seamlessly from a paper reconnaissance map to the mud of the battlefield.
+                    </p>
+                </div>
+
+                <!-- 2. Command Through Intent -->
+                <div class="dossier-panel p-8 hover:bg-black/40 transition-colors duration-300">
+                    <h3 class="feature-title">COMMAND THROUGH INTENT</h3>
+                    <p class="feature-text mb-4">
+                        Issue orders through a command hierarchy. Draw objectives and watch your AI subordinates interpret and execute them through Brigade → Battalion → Company levels. You set the plan; your deputies handle the tactics.
+                    </p>
+                    <p class="feature-text text-sm opacity-80 border-t border-white/10 pt-2 mt-2">
+                        <span class="text-foc-red font-bold">SPICE LOOP:</span> Scan &nbsp;|&nbsp; Prioritize &nbsp;|&nbsp; Intervene &nbsp;|&nbsp; Commit &nbsp;|&nbsp; Evaluate
+                    </p>
+                </div>
+
+                <!-- 3. Logistics as Gameplay -->
+                <div class="dossier-panel p-8 hover:bg-black/40 transition-colors duration-300">
+                    <h3 class="feature-title">LOGISTICS AS GAMEPLAY</h3>
+                    <p class="feature-text">
+                        Supply is physical infrastructure, not an abstract resource. Protect your Main Supply Routes while severing the enemy's. Deploy the Royal Service Corps or Royal Engineers to build dumps, bridge rivers, and establish clearing stations. 
+                    </p>
+                </div>
+
+                <!-- 4. Build a Veteran Force -->
+                <div class="dossier-panel p-8 hover:bg-black/40 transition-colors duration-300">
+                    <h3 class="feature-title">BUILD A VETERAN FORCE</h3>
+                    <p class="feature-text">
+                        Your career spans the entire war. Rise from Captain to Lieutenant-General. Units and Commanders that survive gain experience and traits. That tank crew from the desert carries their skills into Italy if you keep them alive.
+                    </p>
+                </div>
+
+                <!-- 5. Theatre-Scale Warfare (Full Width) -->
+                <div class="dossier-panel p-8 md:col-span-2 hover:bg-black/40 transition-colors duration-300 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <h3 class="feature-title">THEATRE-SCALE WARFARE</h3>
+                        <p class="feature-text mb-4">
+                            Command operations spanning entire theatres of war. Thousands of simulated units across maps measured in hundreds of miles. From managing a single company at Dunkirk to coordinating corps-level offensives across North-West Europe.
+                        </p>
+                        <p class="feature-text text-sm">
+                            <span class="text-foc-red font-bold">CAMPAIGNS:</span> Dunkirk, North Africa, Sicily, Italy, Normandy, Arnhem, Rhine.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
